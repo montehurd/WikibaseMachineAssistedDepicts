@@ -39,8 +39,8 @@
 		"ext.WikibaseMachineAssistedDepicts": {
 			"packageFiles": [
 				"resources/init.js",
-				"resources/datamodel/ImageData.js",
-				"resources/datamodel/SuggestionData.js",
+				"resources/models/ImageData.js",
+				"resources/models/SuggestionData.js",
 				"resources/widgets/ImageDepictsSuggestionsPanel.js",
 				"resources/widgets/ImageWithSuggestionsWidget.js",
 				"resources/widgets/SuggestionWidget.js"
