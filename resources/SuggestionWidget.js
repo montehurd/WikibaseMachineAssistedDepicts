@@ -1,27 +1,22 @@
 'use strict';
 
-var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget
-
+var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var	SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( config ) {
-		config = config || {};
+	config = config || {};
 
-		this.suggestion = config.suggestion;
+	this.suggestionData = config.suggestionData;
 
-		SuggestionWidget.parent.call( this, $.extend( {}, config ) );
-		DOMLessGroupWidget.call( this, $.extend( {}, config ) );
+	SuggestionWidget.parent.call( this, $.extend( {}, config ) );
+	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 
-		this.render();
-	};
+	this.render();
+};
 OO.inheritClass( SuggestionWidget, OO.ui.Widget );
 OO.mixinClass( SuggestionWidget, DOMLessGroupWidget );
-
-
-
 
 SuggestionWidget.prototype.onAddButtonClick = function () {
 	this.emit( 'add' );
 };
-
 
 SuggestionWidget.prototype.render = function () {
 	var subtractButton,
@@ -31,13 +26,6 @@ SuggestionWidget.prototype.render = function () {
 		template,
 		$container;
 
-
-
-
-
-	var self = this;
-
-
 	addButton = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		title: mw.message( 'wikibasemachineassisteddepicts-summary' ).text(),
@@ -45,21 +33,13 @@ SuggestionWidget.prototype.render = function () {
 		icon: 'add',
 		framed: false
 	});
-	// } ).on( 'click', function(){
-	//
-	// 	self.emit( 'choose123' );
-	//
-	// } );
 
 	addButton.connect( this, {
-			click: 'onAddButtonClick'
+		click: 'onAddButtonClick'
 	} );
 
-
-
-
 	suggestionLabel = new OO.ui.LabelWidget( {
-		label: this.suggestion.text,
+		label: this.suggestionData.text,
 		classes: [ 'todo-info' ]
 	} );
 

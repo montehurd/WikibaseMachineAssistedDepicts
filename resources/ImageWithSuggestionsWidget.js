@@ -5,9 +5,7 @@ var SuggestionWidget = require( './SuggestionWidget.js' );
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	config = config || {};
 
-	this.thumburl = config.data.thumburl;
-	this.description = config.data.description;
-	this.suggestions = config.data.suggestions;
+	this.imageData = config.imageData;
 
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
 	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
@@ -26,7 +24,7 @@ OO.inheritClass( ImageWithSuggestionsWidget, OO.ui.Widget );
 OO.mixinClass( ImageWithSuggestionsWidget, DOMLessGroupWidget );
 
 ImageWithSuggestionsWidget.prototype.onItemAdd = function (suggestionWidget) {
-	alert(this.thumburl + ' \n\n ' + suggestionWidget.suggestion.text);
+	alert(this.imageData.thumburl + ' \n\n ' + suggestionWidget.suggestionData.text);
 };
 
 ImageWithSuggestionsWidget.prototype.render = function () {
@@ -39,7 +37,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		$container;
 
 	imageDescriptionLabel = new OO.ui.LabelWidget( {
-		label: this.description,
+		label: this.imageData.description,
 		classes: [ 'todo-info' ]
 	} );
 
@@ -63,8 +61,8 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		'templates/ImageWithSuggestionsWidget.mustache+dom'
 	);
 
-	var suggestionsWidgets = $.map( this.suggestions, function( suggestion ) {
-		return new SuggestionWidget({suggestion: suggestion/*, addHandler: addHandler*/});
+	var suggestionsWidgets = $.map( this.imageData.suggestions, function( suggestionData ) {
+		return new SuggestionWidget({suggestionData: suggestionData});
 	});
 
 	this.addItems(suggestionsWidgets);
@@ -72,7 +70,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	data = {
 		imageDescriptionLabel: imageDescriptionLabel,
 		suggestions: suggestionsWidgets,
-		thumburl: this.thumburl,
+		thumburl: this.imageData.thumburl,
 		buttonConfirmAll: buttonConfirmAll,
 		buttonRejectAll: buttonRejectAll,
 		buttonFinish: buttonFinish

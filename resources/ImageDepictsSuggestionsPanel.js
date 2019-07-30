@@ -40,7 +40,7 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 	);
 
 	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, function( imageData ) {
-		return new ImageWithSuggestionsWidget({data: imageData});
+		return new ImageWithSuggestionsWidget({imageData: imageData});
 	});
 
 	this.addItems(imageWithSuggestionsWidgets);
