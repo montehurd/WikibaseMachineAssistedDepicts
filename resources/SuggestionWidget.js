@@ -14,10 +14,6 @@ var	SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( 
 OO.inheritClass( SuggestionWidget, OO.ui.Widget );
 OO.mixinClass( SuggestionWidget, DOMLessGroupWidget );
 
-SuggestionWidget.prototype.onAddButtonClick = function () {
-	this.emit( 'add' );
-};
-
 SuggestionWidget.prototype.render = function () {
 	var subtractButton,
 		addButton,
@@ -32,11 +28,10 @@ SuggestionWidget.prototype.render = function () {
 		flags: 'destructive',
 		icon: 'add',
 		framed: false
-	});
-
-	addButton.connect( this, {
-		click: 'onAddButtonClick'
-	} );
+	})
+	.on( 'click', function () {
+		this.emit( 'add' );
+	}, null, this);
 
 	suggestionLabel = new OO.ui.LabelWidget( {
 		label: this.suggestionData.text,

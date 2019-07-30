@@ -24,7 +24,7 @@ OO.inheritClass( ImageWithSuggestionsWidget, OO.ui.Widget );
 OO.mixinClass( ImageWithSuggestionsWidget, DOMLessGroupWidget );
 
 ImageWithSuggestionsWidget.prototype.onItemAdd = function (suggestionWidget) {
-	alert(this.imageData.thumburl + ' \n\n ' + suggestionWidget.suggestionData.text);
+	alert(this.imageData.thumburl.split('/').pop() + ' \n\n ' + suggestionWidget.suggestionData.text);
 };
 
 ImageWithSuggestionsWidget.prototype.render = function () {
