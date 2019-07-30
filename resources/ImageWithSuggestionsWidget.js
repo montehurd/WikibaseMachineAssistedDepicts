@@ -2,52 +2,32 @@
 
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var SuggestionWidget = require( './SuggestionWidget.js' );
-
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
-		config = config || {};
+	config = config || {};
 
-		this.thumburl = config.data.thumburl;
-		this.description = config.data.description;
-		this.suggestions = config.data.suggestions;
+	this.thumburl = config.data.thumburl;
+	this.description = config.data.description;
+	this.suggestions = config.data.suggestions;
 
-		ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
-		DOMLessGroupWidget.call( this, $.extend( {}, config ) );
+	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
+	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 
+	this.aggregate( {
+		add: 'itemAdd'
+	} );
 
+	this.connect( this, {
+		itemAdd: 'onItemAdd'
+	} );
 
-
-
-		// this.connect( this, { choose123: 'choose456' } );
-		// this.connect( this, { choose123: [ 'choose123', this ] } );
-
-
-		this.aggregate( {
-				add: 'itemAdd'
-			} );
-
-		this.connect( this, {
-			itemAdd: 'onItemAdd'
-		} );
-
-
-
-
-
-
-		this.render();
-	};
+	this.render();
+};
 OO.inheritClass( ImageWithSuggestionsWidget, OO.ui.Widget );
 OO.mixinClass( ImageWithSuggestionsWidget, DOMLessGroupWidget );
 
-
-
-
 ImageWithSuggestionsWidget.prototype.onItemAdd = function (suggestionWidget) {
-		alert(this.thumburl + ' === ' + suggestionWidget.suggestion.text);
+	alert(this.thumburl + ' \n\n ' + suggestionWidget.suggestion.text);
 };
-
-
-
 
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel,
@@ -83,22 +63,11 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		'templates/ImageWithSuggestionsWidget.mustache+dom'
 	);
 
-
-// var addHandler = function(suggestion) {
-// 	alert(this + ' ' + suggestion.text );
-// };
-
-
-
-
 	var suggestionsWidgets = $.map( this.suggestions, function( suggestion ) {
 		return new SuggestionWidget({suggestion: suggestion/*, addHandler: addHandler*/});
 	});
 
-
-
-this.addItems(suggestionsWidgets);
-
+	this.addItems(suggestionsWidgets);
 
 	data = {
 		imageDescriptionLabel: imageDescriptionLabel,
@@ -109,78 +78,9 @@ this.addItems(suggestionsWidgets);
 		buttonFinish: buttonFinish
 	};
 
-	// Render ItemWidget template
 	$container = template.render( data );
-
-
-
-
-
-	// this.on( 'choose123', function ( data ) {
-	// 		alert('heya');
-	// } );
-
-
-
-	// $container.find( '#test987' ).on( 'click', alert( 'next-step' ) );
-
-
-
-// alert($container.find( '#suggestionWidget' ).length);
-	// var ui = this;
-	// $container.find( '#suggestionWidget' )[0].on( 'click', ui.emit( 'next-step' ) );
-
-	// this.on( 'click', function () {
-	// 	alert('boop!');
-	// } );
-
-
-
-
-
-
-
 
 	this.$element.empty().append( $container );
 };
-
-
-
-
-
-
-
-// ImageWithSuggestionsWidget.prototype.addLanguageInput = function () {
-// 	alert('wa');
-// }
-
-
-
-/*
-this.ui.on( 'next-step', function () {
-	step.moveNext();
-} );
-
-
-this.nextButton = new OO.ui.ButtonWidget( {
-	classes: [ 'mwe-upwiz-button-next' ],
-	label: mw.message( 'mwe-upwiz-next' ).text(),
-	flags: [ 'progressive', 'primary' ]
-} ).on( 'click', function () {
-	ui.emit( 'next-step' );
-} );
-*/
-
-
-
-
-//class="suggestionWidget"
-//
-// <div id="suggestionsAvailable">
-// <div id="suggestionsChosen">
-//
-
-
-
 
 module.exports = ImageWithSuggestionsWidget;

@@ -1,22 +1,19 @@
 'use strict';
 
-//CancelPublishWidget
-
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' );
-
 var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPanel( config ) {
-		config = config || {};
+	config = config || {};
 
-		this.labelTop = config.labelTop;
-		this.labelBottom = config.labelBottom;
-		this.imageDataArray = config.imageDataArray;
+	this.labelTop = config.labelTop;
+	this.labelBottom = config.labelBottom;
+	this.imageDataArray = config.imageDataArray;
 
-		ImageDepictsSuggestionsPanel.parent.call( this, $.extend( {}, config ) );
-		DOMLessGroupWidget.call( this, $.extend( {}, config ) );
+	ImageDepictsSuggestionsPanel.parent.call( this, $.extend( {}, config ) );
+	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 
-		this.render();
-	};
+	this.render();
+};
 OO.inheritClass( ImageDepictsSuggestionsPanel, OO.ui.Widget );
 OO.mixinClass( ImageDepictsSuggestionsPanel, DOMLessGroupWidget );
 
@@ -46,13 +43,14 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 		return new ImageWithSuggestionsWidget({data: imageData});
 	});
 
+	this.addItems(imageWithSuggestionsWidgets);
+
 	data = {
 		labelTop: labelTop,
 		imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,
 		labelBottom: labelBottom
 	};
 
-	// Render ItemWidget template
 	$container = template.render( data );
 
 	// Attach event listeners to nodes in template

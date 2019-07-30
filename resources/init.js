@@ -15,7 +15,7 @@
 		];
 		var randomNumber = Math.floor(Math.random()*array.length);
 		return array[randomNumber];
-	}
+	};
 
 	var randomSuggestions = function() {
 		var array = 'this,that,other,bird,dog,cat,fish,horse,goat,frog,soup,chicken,stick,sky,mountain'.split(',');
@@ -24,7 +24,7 @@
 		});
 		var shuffled = array.sort(function(){return .5 - Math.random()});
 		return shuffled.slice(0, Math.floor(Math.random() * array.length));
-	}
+	};
 
 	var extractImageDataFromQueryResponse = function(response) {
 		return $.map( response.query.pages, function( page ) {
