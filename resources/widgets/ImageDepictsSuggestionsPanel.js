@@ -30,7 +30,7 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 
 	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',
-		'templates/ImageDepictsSuggestionsPanel.mustache+dom'
+		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom'
 	);
 
 	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, function( imageData ) {

@@ -41,7 +41,7 @@ SuggestionWidget.prototype.render = function () {
 
 	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',
-		'templates/SuggestionWidget.mustache+dom'
+		'resources/widgets/SuggestionWidget.mustache+dom'
 	);
 
 	var data = {

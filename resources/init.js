@@ -2,9 +2,9 @@
 
 	'use strict';
 
-	var ImageDepictsSuggestionsPanel = require( './ImageDepictsSuggestionsPanel.js' );
-	var ImageData = require( './data/ImageData.js' );
-	var SuggestionData = require( './data/SuggestionData.js' );
+	var ImageDepictsSuggestionsPanel = require( './widgets/ImageDepictsSuggestionsPanel.js' );
+	var ImageData = require( './datamodel/ImageData.js' );
+	var SuggestionData = require( './datamodel/SuggestionData.js' );
 
 	var randomDescription = function() {
 		var array = [

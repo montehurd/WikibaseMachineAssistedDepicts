@@ -39,16 +39,16 @@
 		"ext.WikibaseMachineAssistedDepicts": {
 			"packageFiles": [
 				"resources/init.js",
-				"resources/data/ImageData.js",
-				"resources/data/SuggestionData.js",
-				"resources/ImageDepictsSuggestionsPanel.js",
-				"resources/ImageWithSuggestionsWidget.js",
-				"resources/SuggestionWidget.js"
+				"resources/datamodel/ImageData.js",
+				"resources/datamodel/SuggestionData.js",
+				"resources/widgets/ImageDepictsSuggestionsPanel.js",
+				"resources/widgets/ImageWithSuggestionsWidget.js",
+				"resources/widgets/SuggestionWidget.js"
 			],
 			"styles": [
-				"resources/ImageDepictsSuggestionsPanel.less",
-				"resources/ImageWithSuggestionsWidget.less",
-				"resources/SuggestionWidget.less"
+				"resources/widgets/ImageDepictsSuggestionsPanel.less",
+				"resources/widgets/ImageWithSuggestionsWidget.less",
+				"resources/widgets/SuggestionWidget.less"
 			],
 			"dependencies": [
 				"oojs",
@@ -56,9 +56,9 @@
 				"mediawiki.template.mustache+dom"
 			],
 			"templates": [
-				"templates/ImageDepictsSuggestionsPanel.mustache+dom",
-				"templates/ImageWithSuggestionsWidget.mustache+dom",
-				"templates/SuggestionWidget.mustache+dom"
+				"resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom",
+				"resources/widgets/ImageWithSuggestionsWidget.mustache+dom",
+				"resources/widgets/SuggestionWidget.mustache+dom"
 			],
 			"messages": [
 				"wikibasemachineassisteddepicts-summary"
