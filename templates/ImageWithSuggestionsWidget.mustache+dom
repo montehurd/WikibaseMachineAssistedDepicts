@@ -1,0 +1,32 @@
+<div id="test987" style="border: 5px solid orange; padding: 35px; margin: 20px;">
+  <img src="{{thumburl}}">
+  <br>
+  {{{imageDescriptionLabel}}}
+  <br>
+  <br>
+  <hr>
+  suggestions:
+  <br>
+  <br>
+  <div id="suggestionsAvailable">
+    {{#suggestions}}
+    {{{.}}}
+    {{/suggestions}}
+  </div>
+  <br>
+  <hr>
+  selected:
+  <div id="suggestionsChosen">
+  </div>
+  <br>
+  <br>
+  <hr>
+  controls:
+  <br>
+  <br>
+  {{{buttonConfirmAll}}}
+  {{{buttonRejectAll}}}
+  <br>
+  <br>
+  {{{buttonFinish}}}
+</div>

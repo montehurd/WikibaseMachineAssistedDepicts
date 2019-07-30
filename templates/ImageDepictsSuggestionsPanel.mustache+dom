@@ -1,0 +1,13 @@
+<div style="border: 3px dashed blue; padding: 35px; margin: 20px;">
+
+-- {{{labelTop}}} --
+<br>
+
+{{#imageWithSuggestionsWidgets}}
+{{{.}}}
+{{/imageWithSuggestionsWidgets}}
+
+<br>
+-- {{{labelBottom}}} --
+
+</div>

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Monte Hurd"
+		]
+	},
+	"wikibasemachineassisteddepicts": "The name of the extension's entry in Special:SpecialPages",
+	"wikibasemachineassisteddepicts-desc": "{{desc}}",
+	"wikibasemachineassisteddepicts-summary": "Description appearing on top of Special:WikibaseMachineAssistedDepicts."
+}

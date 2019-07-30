@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Monte Hurd"
+		]
+	},
+	"wikibasemachineassisteddepicts": "Machine Assisted Depicts",
+	"wikibasemachineassisteddepicts-desc": "Adds the WikibaseMachineAssistedDepicts functionality.",
+	"wikibasemachineassisteddepicts-summary": "On this special page, do this simple thing and earn wonders."
+}
