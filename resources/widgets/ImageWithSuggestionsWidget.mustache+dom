@@ -1,0 +1,15 @@
+<img src="{{thumburl}}">
+<br>
+{{{imageDescriptionLabel}}}
+<br>
+<br>
+{{{suggestionsLabel}}}
+<br>
+{{{suggestions}}}
+<br>
+{{{confirmedLabel}}}
+{{{suggestionsConfirmed}}}
+<br>
+{{{rejectedLabel}}}
+{{{suggestionsRejected}}}
+<div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonSkip}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>

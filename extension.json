@@ -1,0 +1,101 @@
+{
+	"name": "WikibaseMachineAssistedDepicts",
+	"version": "0.0.0",
+	"author": [
+		"Your Name"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:WikibaseMachineAssistedDepicts",
+	"descriptionmsg": "wikibasemachineassisteddepicts-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\WikibaseMachineAssistedDepicts\\": "src/"
+	},
+	"SpecialPages": {
+		"WikibaseMachineAssistedDepicts": "MediaWiki\\Extension\\WikibaseMachineAssistedDepicts\\SpecialWikibaseMachineAssistedDepicts"
+	},
+	"AvailableRights": [
+		"wikibasemachineassisteddepicts-right"
+	],
+	"MessagesDirs": {
+		"WikibaseMachineAssistedDepicts": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"WikibaseMachineAssistedDepictsAlias": "WikibaseMachineAssistedDepicts.i18n.alias.php"
+	},
+	"manifest_version": 2,
+	"Hooks": {
+		"BeforePageDisplay": [
+			"MediaWiki\\Extension\\WikibaseMachineAssistedDepicts\\SpecialWikibaseMachineAssistedDepictsHooks::onBeforePageDisplay"
+		]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "WikibaseMachineAssistedDepicts"
+	},
+	"ResourceModules": {
+		"ext.WikibaseMachineAssistedDepicts": {
+			"packageFiles": [
+				"resources/init.js",
+				"resources/base/TemplateRenderingDOMLessGroupWidget.js",
+				"resources/models/ImageData.js",
+				"resources/models/SuggestionData.js",
+				"resources/models/SuggestionGroupModeEnum.js",
+				"resources/widgets/ImageDepictsSuggestionsPager.js",
+				"resources/widgets/ImageDepictsSuggestionsPage.js",
+				"resources/widgets/ImageWithSuggestionsWidget.js",
+				"resources/widgets/SuggestionBaseWidget.js",
+				"resources/widgets/SuggestionGroupWidget.js",
+				"resources/widgets/SuggestionWidget.js",
+				"resources/widgets/SuggestionConfirmedWidget.js",
+				"resources/widgets/SuggestionRejectedWidget.js"
+			],
+			"styles": [
+				"resources/widgets/ImageDepictsSuggestionsPager.less",
+				"resources/widgets/ImageDepictsSuggestionsPage.less",
+				"resources/widgets/ImageWithSuggestionsWidget.less",
+				"resources/widgets/SuggestionGroupWidget.less",
+				"resources/widgets/SuggestionBaseWidget.less",
+				"resources/widgets/SuggestionWidget.less",
+				"resources/widgets/SuggestionConfirmedWidget.less",
+				"resources/widgets/SuggestionRejectedWidget.less"
+			],
+			"dependencies": [
+				"oojs",
+				"oojs-ui-core",
+				"mediawiki.template.mustache+dom"
+			],
+			"templates": [
+				"resources/widgets/ImageDepictsSuggestionsPager.mustache+dom",
+				"resources/widgets/ImageDepictsSuggestionsPage.mustache+dom",
+				"resources/widgets/ImageWithSuggestionsWidget.mustache+dom",
+				"resources/widgets/SuggestionGroupWidget.mustache+dom",
+				"resources/widgets/SuggestionWidget.mustache+dom",
+				"resources/widgets/SuggestionConfirmedWidget.mustache+dom",
+				"resources/widgets/SuggestionRejectedWidget.mustache+dom"
+			],
+			"messages": [
+				"wikibasemachineassisteddepicts-summary",
+				"wikibasemachineassisteddepicts-suggestions-heading",
+				"wikibasemachineassisteddepicts-suggestions-confirmed-heading",
+				"wikibasemachineassisteddepicts-suggestions-rejected-heading",
+				"wikibasemachineassisteddepicts-save",
+				"wikibasemachineassisteddepicts-save-title",
+				"wikibasemachineassisteddepicts-skip",
+				"wikibasemachineassisteddepicts-skip-title",
+				"wikibasemachineassisteddepicts-confirm-all",
+				"wikibasemachineassisteddepicts-confirm-all-title",
+				"wikibasemachineassisteddepicts-reject-all",
+				"wikibasemachineassisteddepicts-reject-all-title",
+				"wikibasemachineassisteddepicts-reset",
+				"wikibasemachineassisteddepicts-reset-title",
+				"wikibasemachineassisteddepicts-suggestion-confirm-title",
+				"wikibasemachineassisteddepicts-suggestion-confirm-undo-title",
+				"wikibasemachineassisteddepicts-suggestion-reject-title",
+				"wikibasemachineassisteddepicts-suggestion-reject-undo-title"
+			]
+		}
+	}
+}

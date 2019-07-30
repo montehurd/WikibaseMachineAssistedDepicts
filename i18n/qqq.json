@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Monte Hurd"
+		]
+	},
+	"wikibasemachineassisteddepicts": "The name of the extension's entry in Special:SpecialPages",
+	"wikibasemachineassisteddepicts-desc": "{{desc}}",
+	"wikibasemachineassisteddepicts-summary": "Description appearing on top of Special:WikibaseMachineAssistedDepicts.",
+	"wikibasemachineassisteddepicts-suggestions-heading": "Label for the 'Suggestions' section",
+	"wikibasemachineassisteddepicts-suggestions-confirmed-heading": "Label for the 'Confirmed' section",
+	"wikibasemachineassisteddepicts-suggestions-rejected-heading": "Label for the 'Rejected' section",
+	"wikibasemachineassisteddepicts-save": "Text for button to save confirmed suggestions",
+	"wikibasemachineassisteddepicts-save-title": "Title for button to save confirmed suggestions",
+	"wikibasemachineassisteddepicts-skip": "Text for button to skip confirming suggestions for an image",
+	"wikibasemachineassisteddepicts-skip-title": "Title for button to skip confirming suggestions for an image",
+	"wikibasemachineassisteddepicts-confirm-all": "Text for button to confirm all suggestions for an image",
+	"wikibasemachineassisteddepicts-confirm-all-title": "Title for button to confirm all suggestions for an image",
+	"wikibasemachineassisteddepicts-reject-all": "Text for button to reject all suggestions for an image",
+	"wikibasemachineassisteddepicts-reject-all-title": "Title for button to reject all suggestions for an image",
+	"wikibasemachineassisteddepicts-reset": "Text for button to reset all suggestions for an image",
+	"wikibasemachineassisteddepicts-reset-title": "Title for button to reset all suggestions for an image",
+	"wikibasemachineassisteddepicts-suggestion-confirm-title": "Title for button to confirm individual suggestion for an image. Parameters:\n* $1 - Text of suggestion to confirm",
+	"wikibasemachineassisteddepicts-suggestion-confirm-undo-title": "Title for button to undo individual suggestion confirmation for an image. Parameters:\n* $1 - Text of suggestion confirmation to undo",
+	"wikibasemachineassisteddepicts-suggestion-reject-title": "Title for button to reject individual suggestion for an image. Parameters:\n* $1 - Text of suggestion to reject",
+	"wikibasemachineassisteddepicts-suggestion-reject-undo-title": "Title for button to undo individual suggestion rejection for an image. Parameters:\n* $1 - Text of suggestion rejection to undo"
+}

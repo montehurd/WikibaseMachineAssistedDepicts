@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Monte Hurd"
+		]
+	},
+	"wikibasemachineassisteddepicts": "Machine Assisted Depicts",
+	"wikibasemachineassisteddepicts-desc": "Adds the WikibaseMachineAssistedDepicts functionality.",
+	"wikibasemachineassisteddepicts-summary": "Improve structured data on Commons by reviewing image depiction suggestions",
+	"wikibasemachineassisteddepicts-suggestions-heading": "Suggestions:",
+	"wikibasemachineassisteddepicts-suggestions-confirmed-heading": "Confirmed:",
+	"wikibasemachineassisteddepicts-suggestions-rejected-heading": "Rejected:",
+	"wikibasemachineassisteddepicts-save": "Save",
+	"wikibasemachineassisteddepicts-save-title": "Save?",
+	"wikibasemachineassisteddepicts-skip": "Skip",
+	"wikibasemachineassisteddepicts-skip-title": "Skip?",
+	"wikibasemachineassisteddepicts-confirm-all": "Confirm all",
+	"wikibasemachineassisteddepicts-confirm-all-title": "Confirm all?",
+	"wikibasemachineassisteddepicts-reject-all": "Reject all",
+	"wikibasemachineassisteddepicts-reject-all-title": "Reject all?",
+	"wikibasemachineassisteddepicts-reset": "Reset",
+	"wikibasemachineassisteddepicts-reset-title": "Reset?",
+	"wikibasemachineassisteddepicts-suggestion-confirm-title": "Confirm '$1' suggestion?",
+	"wikibasemachineassisteddepicts-suggestion-confirm-undo-title": "Undo '$1' suggestion confirmation?",
+	"wikibasemachineassisteddepicts-suggestion-reject-title": "Reject '$1' suggestion?",
+	"wikibasemachineassisteddepicts-suggestion-reject-undo-title": "Undo '$1' suggestion rejection?"
+}
