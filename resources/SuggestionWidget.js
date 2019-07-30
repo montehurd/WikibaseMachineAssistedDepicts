@@ -15,14 +15,7 @@ OO.inheritClass( SuggestionWidget, OO.ui.Widget );
 OO.mixinClass( SuggestionWidget, DOMLessGroupWidget );
 
 SuggestionWidget.prototype.render = function () {
-	var subtractButton,
-		addButton,
-		suggestionLabel,
-		data,
-		template,
-		$container;
-
-	addButton = new OO.ui.ButtonWidget( {
+	var addButton = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		title: mw.message( 'wikibasemachineassisteddepicts-summary' ).text(),
 		flags: 'destructive',
@@ -33,12 +26,12 @@ SuggestionWidget.prototype.render = function () {
 		this.emit( 'add' );
 	}, null, this);
 
-	suggestionLabel = new OO.ui.LabelWidget( {
+	var suggestionLabel = new OO.ui.LabelWidget( {
 		label: this.suggestionData.text,
 		classes: [ 'todo-info' ]
 	} );
 
-	subtractButton = new OO.ui.ButtonWidget( {
+	var subtractButton = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		title: mw.message( 'wikibasemediainfo-statements-item-remove' ).text(),
 		flags: 'destructive',
@@ -46,19 +39,19 @@ SuggestionWidget.prototype.render = function () {
 		framed: false
 	} );
 
-	template = mw.template.get(
+	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',
 		'templates/SuggestionWidget.mustache+dom'
 	);
 
-	data = {
+	var data = {
 		addButton: addButton,
 		suggestionLabel: suggestionLabel,
 		subtractButton: subtractButton
 	};
 
 	// Render ItemWidget template
-	$container = template.render( data );
+	var $container = template.render( data );
 
 	// Attach event listeners to nodes in template
 	// $container.find( '.wbmi-entity-primary' ).on( 'click', this.toggleItemProminence.bind( this ) );

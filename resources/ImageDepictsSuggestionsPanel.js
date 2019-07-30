@@ -18,23 +18,17 @@ OO.inheritClass( ImageDepictsSuggestionsPanel, OO.ui.Widget );
 OO.mixinClass( ImageDepictsSuggestionsPanel, DOMLessGroupWidget );
 
 ImageDepictsSuggestionsPanel.prototype.render = function () {
-	var labelTop,
-		labelBottom,
-		template,
-		data,
-		$container;
-
-	labelTop = new OO.ui.LabelWidget( {
+	var labelTop = new OO.ui.LabelWidget( {
 		label: this.labelTop,
 		classes: [ 'todo-info' ]
 	} );
 
-	labelBottom = new OO.ui.LabelWidget( {
+	var labelBottom = new OO.ui.LabelWidget( {
 		label: this.labelBottom,
 		classes: [ 'todo-info' ]
 	} );
 
-	template = mw.template.get(
+	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',
 		'templates/ImageDepictsSuggestionsPanel.mustache+dom'
 	);
@@ -45,13 +39,13 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 
 	this.addItems(imageWithSuggestionsWidgets);
 
-	data = {
+	var data = {
 		labelTop: labelTop,
 		imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,
 		labelBottom: labelBottom
 	};
 
-	$container = template.render( data );
+	var $container = template.render( data );
 
 	// Attach event listeners to nodes in template
 	// $container.find( '.wbmi-entity-primary' ).on( 'click', this.toggleItemProminence.bind( this ) );

@@ -24,39 +24,31 @@ OO.inheritClass( ImageWithSuggestionsWidget, OO.ui.Widget );
 OO.mixinClass( ImageWithSuggestionsWidget, DOMLessGroupWidget );
 
 ImageWithSuggestionsWidget.prototype.onItemAdd = function (suggestionWidget) {
-	alert(this.imageData.thumburl.split('/').pop() + ' \n\n ' + suggestionWidget.suggestionData.text);
+	alert(this.imageData.thumburl.split('/').pop() + ' \n... is a ...\n ' + suggestionWidget.suggestionData.text);
 };
 
 ImageWithSuggestionsWidget.prototype.render = function () {
-	var imageDescriptionLabel,
-		template,
-		data,
-		buttonConfirmAll,
-		buttonRejectAll,
-		buttonFinish,
-		$container;
-
-	imageDescriptionLabel = new OO.ui.LabelWidget( {
+	var imageDescriptionLabel = new OO.ui.LabelWidget( {
 		label: this.imageData.description,
 		classes: [ 'todo-info' ]
 	} );
 
-	buttonConfirmAll = new OO.ui.ButtonWidget( {
+	var buttonConfirmAll = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		label: 'confirm all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
 
-	buttonRejectAll = new OO.ui.ButtonWidget( {
+	var buttonRejectAll = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		label: 'reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
 
-	buttonFinish = new OO.ui.ButtonWidget( {
+	var buttonFinish = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		label: 'finish' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
 
-	template = mw.template.get(
+	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',
 		'templates/ImageWithSuggestionsWidget.mustache+dom'
 	);
@@ -67,7 +59,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 	this.addItems(suggestionsWidgets);
 
-	data = {
+	var data = {
 		imageDescriptionLabel: imageDescriptionLabel,
 		suggestions: suggestionsWidgets,
 		thumburl: this.imageData.thumburl,
@@ -76,7 +68,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		buttonFinish: buttonFinish
 	};
 
-	$container = template.render( data );
+	var $container = template.render( data );
 
 	this.$element.empty().append( $container );
 };
