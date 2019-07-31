@@ -37,7 +37,10 @@ SuggestionWidget.prototype.render = function () {
 		flags: 'destructive',
 		icon: 'subtract',
 		framed: false
-	} );
+	} )
+	.on( 'click', function () {
+		this.emit( 'remove' );
+	}, null, this);
 
 	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',

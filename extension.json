@@ -43,11 +43,13 @@
 				"resources/models/SuggestionData.js",
 				"resources/widgets/ImageDepictsSuggestionsPanel.js",
 				"resources/widgets/ImageWithSuggestionsWidget.js",
+				"resources/widgets/SuggestionGroupWidget.js",
 				"resources/widgets/SuggestionWidget.js"
 			],
 			"styles": [
 				"resources/widgets/ImageDepictsSuggestionsPanel.less",
 				"resources/widgets/ImageWithSuggestionsWidget.less",
+				"resources/widgets/SuggestionGroupWidget.less",
 				"resources/widgets/SuggestionWidget.less"
 			],
 			"dependencies": [
@@ -58,6 +60,7 @@
 			"templates": [
 				"resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom",
 				"resources/widgets/ImageWithSuggestionsWidget.mustache+dom",
+				"resources/widgets/SuggestionGroupWidget.mustache+dom",
 				"resources/widgets/SuggestionWidget.mustache+dom"
 			],
 			"messages": [

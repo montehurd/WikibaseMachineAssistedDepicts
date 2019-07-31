@@ -8,15 +8,20 @@
   suggestions:
   <br>
   <br>
-  <div id="suggestionsAvailable">
-    {{#suggestions}}
-    {{{.}}}
-    {{/suggestions}}
+  <div id="suggestions">
+    {{{suggestions}}}
   </div>
   <br>
   <hr>
-  selected:
-  <div id="suggestionsChosen">
+  confirmed:
+  <div id="suggestionsConfirmed">
+    {{{suggestionsConfirmed}}}
+  </div>
+  <br>
+  <hr>
+  rejected:
+  <div id="suggestionsRejected">
+    {{{suggestionsRejected}}}
   </div>
   <br>
   <br>
