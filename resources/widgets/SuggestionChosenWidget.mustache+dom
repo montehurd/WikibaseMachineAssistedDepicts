@@ -1,0 +1,5 @@
+<span id="suggestionChosenWidget" style="border: 1px solid gray; padding: 5px; margin: 5px;">
+
+{{{suggestionLabel}}} {{{subtractButton}}}
+
+</span>

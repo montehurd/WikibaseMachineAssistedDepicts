@@ -1,28 +1,18 @@
 'use strict';
 
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
-// var SuggestionWidget = require( './SuggestionWidget.js' );
 var SuggestionGroupWidget = require( './SuggestionGroupWidget.js' );
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	config = config || {};
 
 	this.imageData = config.imageData;
 
-this.suggestions = this.imageData.suggestions;
-this.suggestionsConfirmed = [];
-this.suggestionsRejected = [];
-//this.selectedSuggestionGroupWidget = null;
+	this.suggestions = this.imageData.suggestions;
+	this.suggestionsConfirmed = [];
+	this.suggestionsRejected = [];
 
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
 	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
-
-	// this.aggregate( {
-	// 	add: 'itemAdd'
-	// } );
-	//
-	// this.connect( this, {
-	// 	itemAdd: 'onItemAdd'
-	// } );
 
 	this.render();
 };
@@ -49,10 +39,6 @@ ImageWithSuggestionsWidget.prototype.onItemRemove = function (suggestionWidget) 
 	this.render();
 };
 
-
-
-
-
 ImageWithSuggestionsWidget.prototype.onConfirmedSuggestionRemove = function (suggestionWidget) {
 	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
 	this.render();
@@ -62,10 +48,6 @@ ImageWithSuggestionsWidget.prototype.onRejectedSuggestionRemove = function (sugg
 	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
 	this.render();
 };
-
-
-
-
 
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
@@ -95,7 +77,9 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 
 
-	var suggestionGroupWidget = new SuggestionGroupWidget({suggestionDataArray: this.suggestions});
+	var suggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionDataArray: this.suggestions
+	});
 	suggestionGroupWidget.connect( this, {
 		itemAdd: 'onItemAdd'
 	} );
@@ -105,7 +89,10 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 
 
-	var confirmedSuggestionGroupWidget = new SuggestionGroupWidget({suggestionDataArray: this.suggestionsConfirmed});
+	var confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionDataArray: this.suggestionsConfirmed,
+		isChosen: true
+	});
 	confirmedSuggestionGroupWidget.connect( this, {
 		itemRemove: 'onConfirmedSuggestionRemove'
 	} );
@@ -114,7 +101,10 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 
 
-	var rejectedSuggestionGroupWidget = new SuggestionGroupWidget({suggestionDataArray: this.suggestionsRejected});
+	var rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionDataArray: this.suggestionsRejected,
+		isChosen: true
+	});
 	rejectedSuggestionGroupWidget.connect( this, {
 		itemRemove: 'onRejectedSuggestionRemove'
 	} );
@@ -122,17 +112,11 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 
 
-	// var suggestionsWidgets = $.map( this.suggestions, function( suggestionData ) {
-	// 	return new SuggestionWidget({suggestionData: suggestionData});
-	// });
-	//
-	// this.addItems(suggestionsWidgets);
-
 	var data = {
 		imageDescriptionLabel: imageDescriptionLabel,
-		suggestions: suggestionGroupWidget, // suggestionsWidgets,
-		suggestionsConfirmed: confirmedSuggestionGroupWidget, // suggestionsWidgets,
-		suggestionsRejected: rejectedSuggestionGroupWidget, // suggestionsWidgets,
+		suggestions: suggestionGroupWidget,
+		suggestionsConfirmed: confirmedSuggestionGroupWidget,
+		suggestionsRejected: rejectedSuggestionGroupWidget,
 		thumburl: this.imageData.thumburl,
 		buttonConfirmAll: buttonConfirmAll,
 		buttonRejectAll: buttonRejectAll,

@@ -43,14 +43,17 @@
 				"resources/models/SuggestionData.js",
 				"resources/widgets/ImageDepictsSuggestionsPanel.js",
 				"resources/widgets/ImageWithSuggestionsWidget.js",
+				"resources/widgets/SuggestionBaseWidget.js",
 				"resources/widgets/SuggestionGroupWidget.js",
-				"resources/widgets/SuggestionWidget.js"
+				"resources/widgets/SuggestionUnchosenWidget.js",
+				"resources/widgets/SuggestionChosenWidget.js"
 			],
 			"styles": [
 				"resources/widgets/ImageDepictsSuggestionsPanel.less",
 				"resources/widgets/ImageWithSuggestionsWidget.less",
 				"resources/widgets/SuggestionGroupWidget.less",
-				"resources/widgets/SuggestionWidget.less"
+				"resources/widgets/SuggestionUnchosenWidget.less",
+				"resources/widgets/SuggestionChosenWidget.less"
 			],
 			"dependencies": [
 				"oojs",
@@ -61,7 +64,8 @@
 				"resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom",
 				"resources/widgets/ImageWithSuggestionsWidget.mustache+dom",
 				"resources/widgets/SuggestionGroupWidget.mustache+dom",
-				"resources/widgets/SuggestionWidget.mustache+dom"
+				"resources/widgets/SuggestionUnchosenWidget.mustache+dom",
+				"resources/widgets/SuggestionChosenWidget.mustache+dom"
 			],
 			"messages": [
 				"wikibasemachineassisteddepicts-summary"

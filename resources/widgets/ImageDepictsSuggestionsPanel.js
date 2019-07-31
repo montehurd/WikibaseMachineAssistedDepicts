@@ -39,13 +39,11 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 
 	this.addItems(imageWithSuggestionsWidgets);
 
-	var data = {
+	var $container = template.render( {
 		labelTop: labelTop,
 		imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,
 		labelBottom: labelBottom
-	};
-
-	var $container = template.render( data );
+	} );
 
 	// Attach event listeners to nodes in template
 	// $container.find( '.wbmi-entity-primary' ).on( 'click', this.toggleItemProminence.bind( this ) );

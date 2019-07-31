@@ -1,29 +1,20 @@
 'use strict';
 
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
-var SuggestionWidget = require( './SuggestionWidget.js' );
+var SuggestionUnchosenWidget = require( './SuggestionUnchosenWidget.js' );
+var SuggestionChosenWidget = require( './SuggestionChosenWidget.js' );
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	config = config || {};
 
 	this.suggestionDataArray = config.suggestionDataArray;
+	this.isChosen = !!config.isChosen;
 
 	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
 	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 
 	this.aggregate( {
-		add: 'itemAdd'
-	} );
-
-	this.connect( this, {
-		itemAdd: 'onItemAdd'
-	} );
-
-	this.aggregate( {
+		add: 'itemAdd',
 		remove: 'itemRemove'
-	} );
-
-	this.connect( this, {
-		itemRemove: 'onItemRemove'
 	} );
 
 	this.render();
@@ -31,31 +22,28 @@ var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 OO.inheritClass( SuggestionGroupWidget, OO.ui.Widget );
 OO.mixinClass( SuggestionGroupWidget, DOMLessGroupWidget );
 
-SuggestionGroupWidget.prototype.onItemAdd = function (suggestionWidget) {
-	// alert(suggestionWidget.suggestionData.text);
-};
-
-SuggestionGroupWidget.prototype.onItemRemove = function (suggestionWidget) {
-	// alert(suggestionWidget.suggestionData.text);
-};
-
 SuggestionGroupWidget.prototype.render = function () {
+	var self = this;
 	var suggestionsWidgets = $.map( this.suggestionDataArray, function( suggestionData ) {
-		return new SuggestionWidget({suggestionData: suggestionData});
+
+		if (self.isChosen) {
+			return new SuggestionChosenWidget({suggestionData: suggestionData});
+		}else{
+			return new SuggestionUnchosenWidget({suggestionData: suggestionData});
+		}
+
 	});
 
 	this.addItems(suggestionsWidgets);
-
-	var data = {
-		suggestions: suggestionsWidgets
-	};
 
 	var template = mw.template.get(
 		'ext.WikibaseMachineAssistedDepicts',
 		'resources/widgets/SuggestionGroupWidget.mustache+dom'
 	);
 
-	var $container = template.render( data );
+	var $container = template.render( {
+		suggestions: suggestionsWidgets
+	} );
 
 	this.$element.empty().append( $container );
 };
