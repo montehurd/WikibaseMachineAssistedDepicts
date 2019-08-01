@@ -100,6 +100,15 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
 		label: this.imageData.description
 	} );
+	var suggestionsLabel = new OO.ui.LabelWidget( {
+		label: 'Suggestions:'
+	} );
+	var confirmedLabel = new OO.ui.LabelWidget( {
+		label: 'Confirmed:'
+	} );
+	var rejectedLabel = new OO.ui.LabelWidget( {
+		label: 'Rejected:'
+	} );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
 		classes: ['buttonConfirmAll'],
@@ -152,6 +161,9 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
 			imageDescriptionLabel: imageDescriptionLabel,
+			suggestionsLabel: suggestionsLabel,
+			confirmedLabel: confirmedLabel,
+			rejectedLabel: rejectedLabel,
 			suggestions: suggestionGroupWidget,
 			suggestionsConfirmed: confirmedSuggestionGroupWidget,
 			suggestionsRejected: rejectedSuggestionGroupWidget,

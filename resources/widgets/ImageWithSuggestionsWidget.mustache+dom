@@ -4,18 +4,18 @@
   {{{imageDescriptionLabel}}}
   <br>
   <br>
-  Suggestions:
+  {{{suggestionsLabel}}}
   <br>
   <div id="suggestions">
     {{{suggestions}}}
   </div>
   <br>
-  Confirmed:
+  {{{confirmedLabel}}}
   <div id="suggestionsConfirmed">
     {{{suggestionsConfirmed}}}
   </div>
   <br>
-  Rejected:
+  {{{rejectedLabel}}}
   <div id="suggestionsRejected">
     {{{suggestionsRejected}}}
   </div>
