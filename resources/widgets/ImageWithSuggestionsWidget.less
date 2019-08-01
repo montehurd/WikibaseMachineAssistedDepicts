@@ -1,15 +1,39 @@
 
-div#suggestions span#suggestionWidget,
-span.buttonReset a.oo-ui-buttonElement-button {
-  background-color: skyBlue !important;
-}
-
-div#suggestionsConfirmed span#suggestionChosenWidget,
-span.buttonConfirmAll a.oo-ui-buttonElement-button {
-  background-color: lightGreen !important;
-}
-
-div#suggestionsRejected span#suggestionChosenWidget,
-span.buttonRejectAll a.oo-ui-buttonElement-button {
-  background-color: pink !important;
+.wbmad-image-with-suggestions {
+  border: 5px solid orange;
+  padding: 35px;
+  margin: 20px;
+  .wbmad-suggestions {
+    .wbmad-suggestion-unchosen {
+      background-color: skyBlue;
+    }
+  }
+  .wbmad-suggestions-confirmed {
+    .wbmad-suggestion-chosen {
+      background-color: lightGreen;
+    }
+  }
+  .wbmad-suggestions-rejected {
+    .wbmad-suggestion-chosen {
+      background-color: pink;
+    }
+  }
+  .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
+    background-color: transparent;
+  }
+  .wbmad-button-confirm-all {
+    .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
+      background-color: lightGreen;
+    }
+  }
+  .wbmad-button-reject-all {
+    .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
+      background-color: pink;
+    }
+  }
+  .wbmad-button-reset {
+    .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
+      background-color: skyBlue;
+    }
+  }
 }

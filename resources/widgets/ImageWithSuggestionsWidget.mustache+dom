@@ -1,4 +1,4 @@
-<div id="test987" style="border: 5px solid orange; padding: 35px; margin: 20px;">
+<div class="wbmad-image-with-suggestions">
   <img src="{{thumburl}}">
   <br>
   {{{imageDescriptionLabel}}}
@@ -6,17 +6,17 @@
   <br>
   {{{suggestionsLabel}}}
   <br>
-  <div id="suggestions">
+  <div class="wbmad-suggestions">
     {{{suggestions}}}
   </div>
   <br>
   {{{confirmedLabel}}}
-  <div id="suggestionsConfirmed">
+  <div class="wbmad-suggestions-confirmed">
     {{{suggestionsConfirmed}}}
   </div>
   <br>
   {{{rejectedLabel}}}
-  <div id="suggestionsRejected">
+  <div class="wbmad-suggestions-rejected">
     {{{suggestionsRejected}}}
   </div>
   <br>

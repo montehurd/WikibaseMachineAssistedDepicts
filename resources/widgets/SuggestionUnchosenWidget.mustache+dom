@@ -1,3 +1,3 @@
-<span id="suggestionWidget" style="border: 1px solid gray; padding: 5px; margin: 5px;">
-{{{addButton}}}{{{suggestionLabel}}} {{{subtractButton}}}
+<span class="wbmad-suggestion-unchosen">
+  {{{addButton}}}{{{suggestionLabel}}} {{{subtractButton}}}
 </span>

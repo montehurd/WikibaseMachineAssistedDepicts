@@ -111,19 +111,19 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
-		classes: ['buttonConfirmAll'],
+		classes: ['wbmad-button-confirm-all'],
 		label: 'Confirm all' // mw.message( 'wzikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onConfirmAll, [], this );
 
 	var buttonRejectAll = new OO.ui.ButtonWidget( {
-		classes: ['buttonRejectAll'],
+		classes: ['wbmad-button-reject-all'],
 		label: 'Reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onRejectAll, [], this );
 
 	var buttonReset = new OO.ui.ButtonWidget( {
-		classes: ['buttonReset'],
+		classes: ['wbmad-button-reset'],
 		label: 'Reset' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onReset, [], this );
