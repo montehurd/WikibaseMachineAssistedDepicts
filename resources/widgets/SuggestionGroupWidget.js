@@ -3,6 +3,7 @@
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var SuggestionUnchosenWidget = require( './SuggestionUnchosenWidget.js' );
 var SuggestionChosenWidget = require( './SuggestionChosenWidget.js' );
+var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	config = config || {};
 
@@ -21,6 +22,7 @@ var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 };
 OO.inheritClass( SuggestionGroupWidget, OO.ui.Widget );
 OO.mixinClass( SuggestionGroupWidget, DOMLessGroupWidget );
+OO.mixinClass( SuggestionGroupWidget, TemplateRenderer );
 
 SuggestionGroupWidget.prototype.render = function () {
 	var self = this;
@@ -36,16 +38,13 @@ SuggestionGroupWidget.prototype.render = function () {
 
 	this.addItems(suggestionsWidgets);
 
-	var template = mw.template.get(
-		mw.config.get( 'moduleID' ),
-		'resources/widgets/SuggestionGroupWidget.mustache+dom'
+	this.renderTemplate(
+		'resources/widgets/SuggestionGroupWidget.mustache+dom',
+		this.$element,
+		{
+			suggestions: suggestionsWidgets
+		}
 	);
-
-	var $container = template.render( {
-		suggestions: suggestionsWidgets
-	} );
-
-	this.$element.empty().append( $container );
 };
 
 module.exports = SuggestionGroupWidget;

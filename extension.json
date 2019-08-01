@@ -46,7 +46,8 @@
 				"resources/widgets/SuggestionBaseWidget.js",
 				"resources/widgets/SuggestionGroupWidget.js",
 				"resources/widgets/SuggestionUnchosenWidget.js",
-				"resources/widgets/SuggestionChosenWidget.js"
+				"resources/widgets/SuggestionChosenWidget.js",
+				"resources/TemplateRenderer.js"
 			],
 			"styles": [
 				"resources/widgets/ImageDepictsSuggestionsPanel.less",

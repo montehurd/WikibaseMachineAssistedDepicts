@@ -1,11 +1,13 @@
 'use strict';
 
 var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
+var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	SuggestionChosenWidget = function WikibaseMachineAssistedDepictsSuggestionChosenWidget( config ) {
 	SuggestionChosenWidget.parent.call( this, $.extend( {}, config ) );
 	this.render();
 };
 OO.inheritClass( SuggestionChosenWidget, SuggestionBaseWidget );
+OO.mixinClass( SuggestionChosenWidget, TemplateRenderer );
 
 SuggestionChosenWidget.prototype.render = function () {
 	var suggestionLabel = new OO.ui.LabelWidget( {
@@ -21,17 +23,14 @@ SuggestionChosenWidget.prototype.render = function () {
 		framed: false
 	}).on( 'click', this.emitDestructive, null, this);
 
-	var template = mw.template.get(
-		mw.config.get( 'moduleID' ),
-		'resources/widgets/SuggestionChosenWidget.mustache+dom'
+	this.renderTemplate(
+		'resources/widgets/SuggestionChosenWidget.mustache+dom',
+		this.$element,
+		{
+			suggestionLabel: suggestionLabel,
+			subtractButton: subtractButton
+		}
 	);
-
-	var $container = template.render({
-		suggestionLabel: suggestionLabel,
-		subtractButton: subtractButton
-	});
-
-	this.$element.empty().append( $container );
 };
 
 module.exports = SuggestionChosenWidget;

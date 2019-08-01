@@ -2,6 +2,7 @@
 
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' );
+var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPanel( config ) {
 	config = config || {};
 
@@ -16,6 +17,7 @@ var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageD
 };
 OO.inheritClass( ImageDepictsSuggestionsPanel, OO.ui.Widget );
 OO.mixinClass( ImageDepictsSuggestionsPanel, DOMLessGroupWidget );
+OO.mixinClass( ImageDepictsSuggestionsPanel, TemplateRenderer );
 
 ImageDepictsSuggestionsPanel.prototype.render = function () {
 	var labelTop = new OO.ui.LabelWidget( {
@@ -28,27 +30,21 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 		classes: [ 'todo-info' ]
 	} );
 
-	var template = mw.template.get(
-		mw.config.get( 'moduleID' ),
-		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom'
-	);
-
 	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, function( imageData ) {
 		return new ImageWithSuggestionsWidget({imageData: imageData});
 	});
 
 	this.addItems(imageWithSuggestionsWidgets);
 
-	var $container = template.render( {
-		labelTop: labelTop,
-		imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,
-		labelBottom: labelBottom
-	} );
-
-	// Attach event listeners to nodes in template
-	// $container.find( '.wbmi-entity-primary' ).on( 'click', this.toggleItemProminence.bind( this ) );
-
-	this.$element.empty().append( $container );
+	this.renderTemplate(
+		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom',
+		this.$element,
+		{
+			labelTop: labelTop,
+			imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,
+			labelBottom: labelBottom
+		}
+	);
 };
 
 module.exports = ImageDepictsSuggestionsPanel;

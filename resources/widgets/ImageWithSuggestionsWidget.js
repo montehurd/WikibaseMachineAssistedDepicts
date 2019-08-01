@@ -2,6 +2,7 @@
 
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var SuggestionGroupWidget = require( './SuggestionGroupWidget.js' );
+var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	config = config || {};
 
@@ -18,6 +19,7 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 };
 OO.inheritClass( ImageWithSuggestionsWidget, OO.ui.Widget );
 OO.mixinClass( ImageWithSuggestionsWidget, DOMLessGroupWidget );
+OO.mixinClass( ImageWithSuggestionsWidget, TemplateRenderer );
 
 ImageWithSuggestionsWidget.prototype.moveItemBetweenArrays = function (item, fromArray, toArray) {
 	if (toArray.indexOf(item) === -1) {
@@ -70,12 +72,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		label: 'finish' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
 
-	var template = mw.template.get(
-		mw.config.get( 'moduleID' ),
-		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom'
-	);
-
-
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestions
@@ -110,18 +106,30 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 
-	var $container = template.render( {
-		imageDescriptionLabel: imageDescriptionLabel,
-		suggestions: suggestionGroupWidget,
-		suggestionsConfirmed: confirmedSuggestionGroupWidget,
-		suggestionsRejected: rejectedSuggestionGroupWidget,
-		thumburl: this.imageData.thumburl,
-		buttonConfirmAll: buttonConfirmAll,
-		buttonRejectAll: buttonRejectAll,
-		buttonFinish: buttonFinish
-	} );
 
-	this.$element.empty().append( $container );
+	this.renderTemplate(
+		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
+		this.$element,
+		{
+			imageDescriptionLabel: imageDescriptionLabel,
+			suggestions: suggestionGroupWidget,
+			suggestionsConfirmed: confirmedSuggestionGroupWidget,
+			suggestionsRejected: rejectedSuggestionGroupWidget,
+			thumburl: this.imageData.thumburl,
+			buttonConfirmAll: buttonConfirmAll,
+			buttonRejectAll: buttonRejectAll,
+			buttonFinish: buttonFinish
+		}
+	);
+
+
+
+
+
+
+
+
+
 };
 
 module.exports = ImageWithSuggestionsWidget;
