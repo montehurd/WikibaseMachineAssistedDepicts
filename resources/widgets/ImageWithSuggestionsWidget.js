@@ -1,10 +1,10 @@
 'use strict';
 
-var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var SuggestionGroupWidget = require( './SuggestionGroupWidget.js' );
-var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	config = config || {};
+	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
 
 	this.imageData = config.imageData;
 
@@ -12,14 +12,9 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = [];
 
-	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
-	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
-
 	this.render();
 };
-OO.inheritClass( ImageWithSuggestionsWidget, OO.ui.Widget );
-OO.mixinClass( ImageWithSuggestionsWidget, DOMLessGroupWidget );
-OO.mixinClass( ImageWithSuggestionsWidget, TemplateRenderer );
+OO.inheritClass( ImageWithSuggestionsWidget, TemplateRenderingDOMLessGroupWidget );
 
 ImageWithSuggestionsWidget.prototype.moveItemBetweenArrays = function (item, fromArray, toArray) {
 	if (toArray.indexOf(item) === -1) {
@@ -109,7 +104,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
-		this.$element,
 		{
 			imageDescriptionLabel: imageDescriptionLabel,
 			suggestions: suggestionGroupWidget,
@@ -121,15 +115,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			buttonFinish: buttonFinish
 		}
 	);
-
-
-
-
-
-
-
-
-
 };
 
 module.exports = ImageWithSuggestionsWidget;

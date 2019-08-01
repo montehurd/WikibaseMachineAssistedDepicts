@@ -1,13 +1,11 @@
 'use strict';
 
 var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
-var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	SuggestionUnchosenWidget = function WikibaseMachineAssistedDepictsSuggestionUnchosenWidget( config ) {
 	SuggestionUnchosenWidget.parent.call( this, $.extend( {}, config ) );
 	this.render();
 };
 OO.inheritClass( SuggestionUnchosenWidget, SuggestionBaseWidget );
-OO.mixinClass( SuggestionUnchosenWidget, TemplateRenderer );
 
 SuggestionUnchosenWidget.prototype.render = function () {
 	var addButton = new OO.ui.ButtonWidget( {
@@ -33,7 +31,6 @@ SuggestionUnchosenWidget.prototype.render = function () {
 
 	this.renderTemplate(
 		'resources/widgets/SuggestionUnchosenWidget.mustache+dom',
-		this.$element,
 		{
 			addButton: addButton,
 			suggestionLabel: suggestionLabel,

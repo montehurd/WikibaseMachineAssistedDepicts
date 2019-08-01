@@ -1,23 +1,18 @@
 'use strict';
 
-var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' );
-var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPanel( config ) {
 	config = config || {};
+	ImageDepictsSuggestionsPanel.parent.call( this, $.extend( {}, config ) );
 
 	this.labelTop = config.labelTop;
 	this.labelBottom = config.labelBottom;
 	this.imageDataArray = config.imageDataArray;
 
-	ImageDepictsSuggestionsPanel.parent.call( this, $.extend( {}, config ) );
-	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
-
 	this.render();
 };
-OO.inheritClass( ImageDepictsSuggestionsPanel, OO.ui.Widget );
-OO.mixinClass( ImageDepictsSuggestionsPanel, DOMLessGroupWidget );
-OO.mixinClass( ImageDepictsSuggestionsPanel, TemplateRenderer );
+OO.inheritClass( ImageDepictsSuggestionsPanel, TemplateRenderingDOMLessGroupWidget );
 
 ImageDepictsSuggestionsPanel.prototype.render = function () {
 	var labelTop = new OO.ui.LabelWidget( {
@@ -38,7 +33,6 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 
 	this.renderTemplate(
 		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom',
-		this.$element,
 		{
 			labelTop: labelTop,
 			imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,

@@ -1,17 +1,14 @@
 'use strict';
 
-var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var SuggestionUnchosenWidget = require( './SuggestionUnchosenWidget.js' );
 var SuggestionChosenWidget = require( './SuggestionChosenWidget.js' );
-var TemplateRenderer = require( './../TemplateRenderer.js' );
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	config = config || {};
+	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
 
 	this.suggestionDataArray = config.suggestionDataArray;
 	this.isChosen = !!config.isChosen;
-
-	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
-	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 
 	this.aggregate( {
 		add: 'itemAdd',
@@ -20,9 +17,7 @@ var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 
 	this.render();
 };
-OO.inheritClass( SuggestionGroupWidget, OO.ui.Widget );
-OO.mixinClass( SuggestionGroupWidget, DOMLessGroupWidget );
-OO.mixinClass( SuggestionGroupWidget, TemplateRenderer );
+OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );
 
 SuggestionGroupWidget.prototype.render = function () {
 	var self = this;
@@ -40,7 +35,6 @@ SuggestionGroupWidget.prototype.render = function () {
 
 	this.renderTemplate(
 		'resources/widgets/SuggestionGroupWidget.mustache+dom',
-		this.$element,
 		{
 			suggestions: suggestionsWidgets
 		}

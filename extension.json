@@ -39,6 +39,7 @@
 		"ext.WikibaseMachineAssistedDepicts": {
 			"packageFiles": [
 				"resources/init.js",
+				"resources/base/TemplateRenderingDOMLessGroupWidget.js",
 				"resources/models/ImageData.js",
 				"resources/models/SuggestionData.js",
 				"resources/widgets/ImageDepictsSuggestionsPanel.js",
@@ -46,8 +47,7 @@
 				"resources/widgets/SuggestionBaseWidget.js",
 				"resources/widgets/SuggestionGroupWidget.js",
 				"resources/widgets/SuggestionUnchosenWidget.js",
-				"resources/widgets/SuggestionChosenWidget.js",
-				"resources/TemplateRenderer.js"
+				"resources/widgets/SuggestionChosenWidget.js"
 			],
 			"styles": [
 				"resources/widgets/ImageDepictsSuggestionsPanel.less",

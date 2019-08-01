@@ -1,16 +1,13 @@
 'use strict';
 
-var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var	SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBaseWidget( config ) {
 	config = config || {};
+	SuggestionBaseWidget.parent.call( this, $.extend( {}, config ) );
 
 	this.suggestionData = config.suggestionData;
-
-	SuggestionBaseWidget.parent.call( this, $.extend( {}, config ) );
-	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 };
-OO.inheritClass( SuggestionBaseWidget, OO.ui.Widget );
-OO.mixinClass( SuggestionBaseWidget, DOMLessGroupWidget );
+OO.inheritClass( SuggestionBaseWidget, TemplateRenderingDOMLessGroupWidget );
 
 SuggestionBaseWidget.prototype.emitProgressive = function () {
 	this.emit( 'add' );
