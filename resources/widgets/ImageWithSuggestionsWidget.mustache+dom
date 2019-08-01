@@ -4,34 +4,26 @@
   {{{imageDescriptionLabel}}}
   <br>
   <br>
-  <hr>
   Suggestions:
   <br>
   <div id="suggestions">
     {{{suggestions}}}
   </div>
   <br>
-  <hr>
   Confirmed:
   <div id="suggestionsConfirmed">
     {{{suggestionsConfirmed}}}
   </div>
   <br>
-  <hr>
   Rejected:
   <div id="suggestionsRejected">
     {{{suggestionsRejected}}}
   </div>
   <br>
-  <br>
-  <hr>
-  Controls:
-  <br>
-  <br>
+  {{{buttonFinish}}}
+  &nbsp;&nbsp;
   {{{buttonConfirmAll}}}
   {{{buttonRejectAll}}}
   {{{buttonReset}}}
   <br>
-  <br>
-  {{{buttonFinish}}}
 </div>

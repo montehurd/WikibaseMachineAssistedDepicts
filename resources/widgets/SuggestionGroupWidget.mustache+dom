@@ -1,4 +1,4 @@
-<div id="suggestionGroupWidget" style="border: 3px dashed gray; padding: 5px; margin: 5px;">
+<div id="suggestionGroupWidget">
 
 {{#suggestions}}
 {{{.}}}
