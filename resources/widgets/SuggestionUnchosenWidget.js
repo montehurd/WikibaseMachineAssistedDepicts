@@ -30,7 +30,7 @@ SuggestionUnchosenWidget.prototype.render = function () {
 	}).on( 'click', this.emitDestructive, null, this);
 
 	var template = mw.template.get(
-		'ext.WikibaseMachineAssistedDepicts',
+		mw.config.get( 'moduleID' ),
 		'resources/widgets/SuggestionUnchosenWidget.mustache+dom'
 	);
 

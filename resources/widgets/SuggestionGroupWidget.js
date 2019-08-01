@@ -37,7 +37,7 @@ SuggestionGroupWidget.prototype.render = function () {
 	this.addItems(suggestionsWidgets);
 
 	var template = mw.template.get(
-		'ext.WikibaseMachineAssistedDepicts',
+		mw.config.get( 'moduleID' ),
 		'resources/widgets/SuggestionGroupWidget.mustache+dom'
 	);
 

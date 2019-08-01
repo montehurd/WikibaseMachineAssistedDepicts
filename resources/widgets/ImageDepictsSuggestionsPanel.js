@@ -29,7 +29,7 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 	} );
 
 	var template = mw.template.get(
-		'ext.WikibaseMachineAssistedDepicts',
+		mw.config.get( 'moduleID' ),
 		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom'
 	);
 

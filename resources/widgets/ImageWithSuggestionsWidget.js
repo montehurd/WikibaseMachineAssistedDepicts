@@ -71,7 +71,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 	var template = mw.template.get(
-		'ext.WikibaseMachineAssistedDepicts',
+		mw.config.get( 'moduleID' ),
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom'
 	);
 
@@ -110,9 +110,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 
-
-
-	var data = {
+	var $container = template.render( {
 		imageDescriptionLabel: imageDescriptionLabel,
 		suggestions: suggestionGroupWidget,
 		suggestionsConfirmed: confirmedSuggestionGroupWidget,
@@ -121,9 +119,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		buttonConfirmAll: buttonConfirmAll,
 		buttonRejectAll: buttonRejectAll,
 		buttonFinish: buttonFinish
-	};
-
-	var $container = template.render( data );
+	} );
 
 	this.$element.empty().append( $container );
 };
