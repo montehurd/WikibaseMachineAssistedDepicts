@@ -5,6 +5,7 @@
 
 {{#imageWithSuggestionsWidgets}}
 {{{.}}}
+<br>
 {{/imageWithSuggestionsWidgets}}
 
 <br>
