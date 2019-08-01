@@ -1,6 +1,6 @@
 'use strict';
 
-var	SuggestionData = function WikibaseMachineAssistedDepictsSuggestionData( text ) {
+var SuggestionData = function WikibaseMachineAssistedDepictsSuggestionData( text ) {
 	this.text = text;
 };
 
