@@ -1,3 +1,4 @@
+@import '../style-variables.less';
 
 .wbmad-image-with-suggestions {
   border: 5px solid orange;
@@ -5,17 +6,17 @@
   margin: 20px;
   .wbmad-suggestions {
     .wbmad-suggestion-unchosen {
-      background-color: skyBlue;
+      background-color: @color-suggestion-background;
     }
   }
   .wbmad-suggestions-confirmed {
     .wbmad-suggestion-chosen {
-      background-color: lightGreen;
+      background-color: @color-suggestion-background-confirmed;
     }
   }
   .wbmad-suggestions-rejected {
     .wbmad-suggestion-chosen {
-      background-color: pink;
+      background-color: @color-suggestion-background-rejected;
     }
   }
   .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
@@ -23,17 +24,17 @@
   }
   .wbmad-button-confirm-all {
     .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
-      background-color: lightGreen;
+      background-color: @color-suggestion-background-confirmed;
     }
   }
   .wbmad-button-reject-all {
     .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
-      background-color: pink;
+      background-color: @color-suggestion-background-rejected;
     }
   }
   .wbmad-button-reset {
     .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
-      background-color: skyBlue;
+      background-color: @color-suggestion-background;
     }
   }
 }
