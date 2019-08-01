@@ -18,12 +18,12 @@
 	};
 
 	var randomSuggestions = function() {
-		var array = 'this,that,other,bird,dog,cat,fish,horse,goat,frog,soup,chicken,stick,sky,mountain'.split(',');
+		var array = 'this,that,other,bird,dog,cat,fish,horse,goat,frog,soup,chicken,stick,sky,mountain,house,beach,face,eye,book,shirt,watch,hair,arm,bricks,map,hand,window,floor,lamp,river,can,logo,bottle,form,stamp,chart,graph,lines'.split(',');
 		array = $.map( array, function( string ) {
 			return new SuggestionData(string);
 		});
 		var shuffled = array.sort(function(){return .5 - Math.random()});
-		return shuffled.slice(0, Math.floor(Math.random() * array.length));
+		return shuffled.slice(0, Math.min(15, Math.floor(Math.random() * array.length) + 5));
 	};
 
 	var extractImageDataFromQueryResponse = function(response) {
@@ -50,7 +50,7 @@
 		$('#content').append('<p>Oh no, something went wrong!</p>');
 	};
 
-	var sampleQueryPageURL = "https://en.wikipedia.org//w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&gqplimit=15&origin=*";
+	var sampleQueryPageURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&gqplimit=15&origin=*";
 
 	$.getJSON(sampleQueryPageURL)
 		.done(handleQueryResponse)

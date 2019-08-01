@@ -73,6 +73,29 @@ ImageWithSuggestionsWidget.prototype.onReset = function () {
 	this.render();
 };
 
+ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
+	return '' +
+		'IMAGE:' +
+		'\n' +
+		this.imageData.thumburl.split('/').pop() +
+		'\n\n' +
+		'DEPICTS:' +
+		'\n' +
+		$.map( this.suggestionsConfirmed, function( suggestion ) {
+			return suggestion.text;
+		}).join('\n') +
+		'\n\n' +
+		'DOESN\'T DEPICT:' +
+		'\n' +
+		$.map( this.suggestionsRejected, function( suggestion ) {
+			return suggestion.text;
+		}).join('\n');
+};
+
+ImageWithSuggestionsWidget.prototype.onSave = function () {
+	alert(this.getSaveDebugString());
+};
+
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
 		label: this.imageData.description
@@ -98,7 +121,8 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 	var buttonFinish = new OO.ui.ButtonWidget( {
 		label: 'Save' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
-	} );
+	} )
+	.on('click', this.onSave, [], this );
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestions
