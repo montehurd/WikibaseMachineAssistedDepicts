@@ -79,22 +79,22 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
-		label: 'confirm all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		label: 'Confirm all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onConfirmAll, [], this );
 
 	var buttonRejectAll = new OO.ui.ButtonWidget( {
-		label: 'reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		label: 'Reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onRejectAll, [], this );
 
 	var buttonReset = new OO.ui.ButtonWidget( {
-		label: 'reset' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		label: 'Reset' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onReset, [], this );
 
 	var buttonFinish = new OO.ui.ButtonWidget( {
-		label: 'finish' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		label: 'Finish' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({

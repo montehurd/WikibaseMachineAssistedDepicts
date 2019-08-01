@@ -5,28 +5,27 @@
   <br>
   <br>
   <hr>
-  suggestions:
-  <br>
+  Suggestions:
   <br>
   <div id="suggestions">
     {{{suggestions}}}
   </div>
   <br>
   <hr>
-  confirmed:
+  Confirmed:
   <div id="suggestionsConfirmed">
     {{{suggestionsConfirmed}}}
   </div>
   <br>
   <hr>
-  rejected:
+  Rejected:
   <div id="suggestionsRejected">
     {{{suggestionsRejected}}}
   </div>
   <br>
   <br>
   <hr>
-  controls:
+  Controls:
   <br>
   <br>
   {{{buttonConfirmAll}}}
