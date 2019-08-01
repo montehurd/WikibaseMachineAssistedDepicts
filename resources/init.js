@@ -36,9 +36,7 @@
 		var imageDataArray = extractImageDataFromQueryResponse(response);
 
 		var imageDepictsSuggestionsPanel = new ImageDepictsSuggestionsPanel( {
-			labelTop: 'top 123',
-			imageDataArray: imageDataArray,
-			labelBottom: 'bottom 456'
+			imageDataArray: imageDataArray
 		} );
 
 		$( '#content' ).append(

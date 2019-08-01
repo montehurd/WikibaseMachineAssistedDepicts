@@ -13,14 +13,6 @@ var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageD
 OO.inheritClass( ImageDepictsSuggestionsPanel, TemplateRenderingDOMLessGroupWidget );
 
 ImageDepictsSuggestionsPanel.prototype.render = function () {
-	var labelTop = new OO.ui.LabelWidget( {
-		label: this.labelTop
-	} );
-
-	var labelBottom = new OO.ui.LabelWidget( {
-		label: this.labelBottom
-	} );
-
 	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, function( imageData ) {
 		return new ImageWithSuggestionsWidget({imageData: imageData});
 	});
@@ -30,9 +22,7 @@ ImageDepictsSuggestionsPanel.prototype.render = function () {
 	this.renderTemplate(
 		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom',
 		{
-			labelTop: labelTop,
-			imageWithSuggestionsWidgets: imageWithSuggestionsWidgets,
-			labelBottom: labelBottom
+			imageWithSuggestionsWidgets: imageWithSuggestionsWidgets
 		}
 	);
 };
