@@ -75,30 +75,25 @@ ImageWithSuggestionsWidget.prototype.onReset = function () {
 
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
-		label: this.imageData.description,
-		classes: [ 'todo-info' ]
+		label: this.imageData.description
 	} );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
-		classes: [ 'wbmi-item-remove' ],
 		label: 'confirm all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onConfirmAll, [], this );
 
 	var buttonRejectAll = new OO.ui.ButtonWidget( {
-		classes: [ 'wbmi-item-remove' ],
 		label: 'reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onRejectAll, [], this );
 
 	var buttonReset = new OO.ui.ButtonWidget( {
-		classes: [ 'wbmi-item-remove' ],
 		label: 'reset' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onReset, [], this );
 
 	var buttonFinish = new OO.ui.ButtonWidget( {
-		classes: [ 'wbmi-item-remove' ],
 		label: 'finish' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
 

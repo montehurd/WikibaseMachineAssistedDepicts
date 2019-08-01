@@ -9,14 +9,11 @@ OO.inheritClass( SuggestionChosenWidget, SuggestionBaseWidget );
 
 SuggestionChosenWidget.prototype.render = function () {
 	var suggestionLabel = new OO.ui.LabelWidget( {
-		label: this.suggestionData.text,
-		classes: [ 'todo-info' ]
+		label: this.suggestionData.text
 	} );
 
 	var subtractButton = new OO.ui.ButtonWidget( {
-		classes: [ 'wbmi-item-remove' ],
 		title: mw.message( 'wikibasemediainfo-statements-item-remove' ).text(),
-		flags: 'destructive',
 		icon: 'close',
 		framed: false
 	}).on( 'click', this.emitDestructive, null, this);

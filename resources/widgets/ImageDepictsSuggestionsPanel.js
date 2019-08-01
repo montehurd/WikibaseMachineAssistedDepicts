@@ -14,13 +14,11 @@ OO.inheritClass( ImageDepictsSuggestionsPanel, TemplateRenderingDOMLessGroupWidg
 
 ImageDepictsSuggestionsPanel.prototype.render = function () {
 	var labelTop = new OO.ui.LabelWidget( {
-		label: this.labelTop,
-		classes: [ 'todo-info' ]
+		label: this.labelTop
 	} );
 
 	var labelBottom = new OO.ui.LabelWidget( {
-		label: this.labelBottom,
-		classes: [ 'todo-info' ]
+		label: this.labelBottom
 	} );
 
 	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, function( imageData ) {
