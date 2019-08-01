@@ -7,11 +7,20 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
 	this.imageData = config.imageData;
 	this.suggestions = this.imageData.suggestions;
+	this.suggestionsOriginal = this.deepArrayCopy( this.suggestions );
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = [];
 	this.render();
 };
 OO.inheritClass( ImageWithSuggestionsWidget, TemplateRenderingDOMLessGroupWidget );
+
+ImageWithSuggestionsWidget.prototype.deepArrayCopy = function (array) {
+	return $.extend( true, [], array );
+};
+
+ImageWithSuggestionsWidget.prototype.getOriginalSuggestions = function () {
+	return this.deepArrayCopy( this.suggestionsOriginal );
+};
 
 ImageWithSuggestionsWidget.prototype.moveItemBetweenArrays = function (item, fromArray, toArray) {
 	if (toArray.indexOf(item) === -1) {
@@ -43,6 +52,27 @@ ImageWithSuggestionsWidget.prototype.onRejectedRejectedSuggestion = function (su
 	this.render();
 };
 
+ImageWithSuggestionsWidget.prototype.onConfirmAll = function () {
+	this.suggestions = [];
+	this.suggestionsConfirmed = this.getOriginalSuggestions();
+	this.suggestionsRejected = [];
+	this.render();
+};
+
+ImageWithSuggestionsWidget.prototype.onRejectAll = function () {
+	this.suggestions = [];
+	this.suggestionsConfirmed = [];
+	this.suggestionsRejected = this.getOriginalSuggestions();
+	this.render();
+};
+
+ImageWithSuggestionsWidget.prototype.onReset = function () {
+	this.suggestions = this.getOriginalSuggestions();
+	this.suggestionsConfirmed = [];
+	this.suggestionsRejected = [];
+	this.render();
+};
+
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
 		label: this.imageData.description,
@@ -52,18 +82,25 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		label: 'confirm all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
-	} );
+	} )
+	.on('click', this.onConfirmAll, [], this );
 
 	var buttonRejectAll = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		label: 'reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
-	} );
+	} )
+	.on('click', this.onRejectAll, [], this );
+
+	var buttonReset = new OO.ui.ButtonWidget( {
+		classes: [ 'wbmi-item-remove' ],
+		label: 'reset' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+	} )
+	.on('click', this.onReset, [], this );
 
 	var buttonFinish = new OO.ui.ButtonWidget( {
 		classes: [ 'wbmi-item-remove' ],
 		label: 'finish' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} );
-
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestions
@@ -73,8 +110,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		itemRemove: 'onRejectSuggestion'
 	} );
 
-
-
 	var confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestionsConfirmed,
 		useSuggestionChosenWidgets: true
@@ -83,10 +118,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		itemRemove: 'onRejectConfirmedSuggestion'
 	} );
 
-
-
-
-
 	var rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestionsRejected,
 		useSuggestionChosenWidgets: true
@@ -94,8 +125,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	.connect( this, {
 		itemRemove: 'onRejectedRejectedSuggestion'
 	} );
-
-
 
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
@@ -107,6 +136,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			thumburl: this.imageData.thumburl,
 			buttonConfirmAll: buttonConfirmAll,
 			buttonRejectAll: buttonRejectAll,
+			buttonReset: buttonReset,
 			buttonFinish: buttonFinish
 		}
 	);

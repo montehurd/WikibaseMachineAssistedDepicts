@@ -31,6 +31,7 @@
   <br>
   {{{buttonConfirmAll}}}
   {{{buttonRejectAll}}}
+  {{{buttonReset}}}
   <br>
   <br>
   {{{buttonFinish}}}
