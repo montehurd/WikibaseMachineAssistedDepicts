@@ -23,22 +23,22 @@ ImageWithSuggestionsWidget.prototype.moveItemBetweenArrays = function (item, fro
 	};
 };
 
-ImageWithSuggestionsWidget.prototype.onItemAdd = function (suggestionWidget) {
+ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionWidget) {
 	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsConfirmed);
 	this.render();
 };
 
-ImageWithSuggestionsWidget.prototype.onItemRemove = function (suggestionWidget) {
+ImageWithSuggestionsWidget.prototype.onRejectSuggestion = function (suggestionWidget) {
 	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsRejected);
 	this.render();
 };
 
-ImageWithSuggestionsWidget.prototype.onConfirmedSuggestionRemove = function (suggestionWidget) {
+ImageWithSuggestionsWidget.prototype.onRejectConfirmedSuggestion = function (suggestionWidget) {
 	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
 	this.render();
 };
 
-ImageWithSuggestionsWidget.prototype.onRejectedSuggestionRemove = function (suggestionWidget) {
+ImageWithSuggestionsWidget.prototype.onRejectedRejectedSuggestion = function (suggestionWidget) {
 	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
 	this.render();
 };
@@ -67,22 +67,20 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestions
-	});
-	suggestionGroupWidget.connect( this, {
-		itemAdd: 'onItemAdd'
-	} );
-	suggestionGroupWidget.connect( this, {
-		itemRemove: 'onItemRemove'
+	} )
+	.connect( this, {
+		itemAdd: 'onConfirmSuggestion',
+		itemRemove: 'onRejectSuggestion'
 	} );
 
 
 
 	var confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestionsConfirmed,
-		isChosen: true
-	});
-	confirmedSuggestionGroupWidget.connect( this, {
-		itemRemove: 'onConfirmedSuggestionRemove'
+		useSuggestionChosenWidgets: true
+	})
+	.connect( this, {
+		itemRemove: 'onRejectConfirmedSuggestion'
 	} );
 
 
@@ -91,10 +89,10 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 	var rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestionsRejected,
-		isChosen: true
-	});
-	rejectedSuggestionGroupWidget.connect( this, {
-		itemRemove: 'onRejectedSuggestionRemove'
+		useSuggestionChosenWidgets: true
+	})
+	.connect( this, {
+		itemRemove: 'onRejectedRejectedSuggestion'
 	} );
 
 
