@@ -2,13 +2,12 @@
 
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' );
+
 var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPanel( config ) {
 	ImageDepictsSuggestionsPanel.parent.call( this, $.extend( {}, config ) );
-
 	this.labelTop = config.labelTop;
 	this.labelBottom = config.labelBottom;
 	this.imageDataArray = config.imageDataArray;
-
 	this.render();
 };
 OO.inheritClass( ImageDepictsSuggestionsPanel, TemplateRenderingDOMLessGroupWidget );

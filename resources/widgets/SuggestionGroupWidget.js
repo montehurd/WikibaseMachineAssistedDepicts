@@ -3,17 +3,15 @@
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var SuggestionUnchosenWidget = require( './SuggestionUnchosenWidget.js' );
 var SuggestionChosenWidget = require( './SuggestionChosenWidget.js' );
+
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
-
 	this.suggestionDataArray = config.suggestionDataArray;
 	this.isChosen = !!config.isChosen;
-
 	this.aggregate( {
 		add: 'itemAdd',
 		remove: 'itemRemove'
 	} );
-
 	this.render();
 };
 OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );

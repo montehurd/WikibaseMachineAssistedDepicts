@@ -1,6 +1,7 @@
 'use strict';
 
 var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
+
 var	SuggestionUnchosenWidget = function WikibaseMachineAssistedDepictsSuggestionUnchosenWidget( config ) {
 	SuggestionUnchosenWidget.parent.call( this, $.extend( {}, config ) );
 	this.render();

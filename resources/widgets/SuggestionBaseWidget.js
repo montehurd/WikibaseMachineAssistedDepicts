@@ -1,9 +1,9 @@
 'use strict';
 
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
+
 var	SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBaseWidget( config ) {
 	SuggestionBaseWidget.parent.call( this, $.extend( {}, config ) );
-
 	this.suggestionData = config.suggestionData;
 };
 OO.inheritClass( SuggestionBaseWidget, TemplateRenderingDOMLessGroupWidget );
