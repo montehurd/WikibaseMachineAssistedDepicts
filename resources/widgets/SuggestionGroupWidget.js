@@ -4,7 +4,6 @@ var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingD
 var SuggestionUnchosenWidget = require( './SuggestionUnchosenWidget.js' );
 var SuggestionChosenWidget = require( './SuggestionChosenWidget.js' );
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
-	config = config || {};
 	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
 
 	this.suggestionDataArray = config.suggestionDataArray;

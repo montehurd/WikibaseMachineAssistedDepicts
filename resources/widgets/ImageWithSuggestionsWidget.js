@@ -3,7 +3,6 @@
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var SuggestionGroupWidget = require( './SuggestionGroupWidget.js' );
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
-	config = config || {};
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
 
 	this.imageData = config.imageData;

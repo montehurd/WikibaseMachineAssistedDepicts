@@ -3,14 +3,11 @@
 var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
 var	TemplateRenderingDOMLessGroupWidget = function WikibaseMachineAssistedDepictsTemplateRenderingDOMLessGroupWidget( config ) {
 	config = config || {};
-
 	TemplateRenderingDOMLessGroupWidget.parent.call( this, $.extend( {}, config ) );
 	DOMLessGroupWidget.call( this, $.extend( {}, config ) );
 };
 OO.inheritClass( TemplateRenderingDOMLessGroupWidget, OO.ui.Widget );
 OO.mixinClass( TemplateRenderingDOMLessGroupWidget, DOMLessGroupWidget );
-
-
 
 TemplateRenderingDOMLessGroupWidget.prototype.renderTemplate = function (templatePath, data) {
 	this.$element
