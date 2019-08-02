@@ -96,6 +96,10 @@ ImageWithSuggestionsWidget.prototype.onSave = function () {
 	alert(this.getSaveDebugString());
 };
 
+ImageWithSuggestionsWidget.prototype.onSkip = function () {
+	this.$element.slideUp();
+};
+
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
 		label: this.imageData.description
@@ -133,6 +137,12 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		label: 'Save' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onSave, [], this );
+
+	var buttonSkip = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-skip'],
+		label: 'Skip' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+	} )
+	.on('click', this.onSkip, [], this );
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({
 		suggestionDataArray: this.suggestions
@@ -172,7 +182,8 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			buttonConfirmAll: buttonConfirmAll,
 			buttonRejectAll: buttonRejectAll,
 			buttonReset: buttonReset,
-			buttonFinish: buttonFinish
+			buttonFinish: buttonFinish,
+			buttonSkip: buttonSkip
 		}
 	);
 };
