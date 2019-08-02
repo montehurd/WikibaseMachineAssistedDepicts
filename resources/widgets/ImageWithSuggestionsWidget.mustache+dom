@@ -21,7 +21,6 @@
   </div>
   <br>
   {{{buttonFinish}}}
-  &nbsp;&nbsp;
   {{{buttonConfirmAll}}}
   {{{buttonRejectAll}}}
   {{{buttonReset}}}

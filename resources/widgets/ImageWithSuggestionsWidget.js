@@ -129,6 +129,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	.on('click', this.onReset, [], this );
 
 	var buttonFinish = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-save'],
 		label: 'Save' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
 	} )
 	.on('click', this.onSave, [], this );
