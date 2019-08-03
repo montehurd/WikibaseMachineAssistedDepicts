@@ -20,10 +20,6 @@
     {{{suggestionsRejected}}}
   </div>
   <br>
-  {{{buttonFinish}}}
-  {{{buttonSkip}}}
-  {{{buttonConfirmAll}}}
-  {{{buttonRejectAll}}}
-  {{{buttonReset}}}
+  {{{buttonFinish}}}{{{buttonSkip}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}
   <br>
 </div>
