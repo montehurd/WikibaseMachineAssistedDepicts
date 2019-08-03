@@ -105,13 +105,13 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		label: this.imageData.description
 	} );
 	var suggestionsLabel = new OO.ui.LabelWidget( {
-		label: 'Suggestions:'
+		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-heading' ).text()
 	} );
 	var confirmedLabel = new OO.ui.LabelWidget( {
-		label: 'Confirmed:'
+		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-confirmed-heading' ).text()
 	} );
 	var rejectedLabel = new OO.ui.LabelWidget( {
-		label: 'Rejected:'
+		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-rejected-heading' ).text()
 	} );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
