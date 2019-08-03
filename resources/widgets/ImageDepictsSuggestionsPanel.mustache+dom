@@ -1,7 +1,6 @@
 <div class="wbmad-image-depicts-suggestions">
   {{#imageWithSuggestionsWidgets}}
   {{{.}}}
-  <br>
   {{/imageWithSuggestionsWidgets}}
   <br>
 </div>
