@@ -10,7 +10,7 @@ OO.inheritClass( SuggestionUnchosenWidget, SuggestionBaseWidget );
 
 SuggestionUnchosenWidget.prototype.render = function () {
 	var addButton = new OO.ui.ButtonWidget( {
-		title: mw.message( 'wikibasemachineassisteddepicts-summary' ).text(),
+		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-confirm-title', this.suggestionData.text ).text(),
 		icon: 'add',
 		framed: false
 	}).on( 'click', this.emitProgressive, null, this);
@@ -20,7 +20,7 @@ SuggestionUnchosenWidget.prototype.render = function () {
 	} );
 
 	var subtractButton = new OO.ui.ButtonWidget( {
-		title: mw.message( 'wikibasemediainfo-statements-item-remove' ).text(),
+		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-reject-title', this.suggestionData.text ).text(),
 		icon: 'subtract',
 		framed: false
 	}).on( 'click', this.emitDestructive, null, this);

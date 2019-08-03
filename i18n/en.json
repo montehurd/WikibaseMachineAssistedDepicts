@@ -20,6 +20,6 @@
 	"wikibasemachineassisteddepicts-reject-all-title": "Reject all?",
 	"wikibasemachineassisteddepicts-reset": "Reset",
 	"wikibasemachineassisteddepicts-reset-title": "Reset?",
-	"wikibasemachineassisteddepicts-suggestion-confirm-title": "Confirm $1 suggestion?",
-	"wikibasemachineassisteddepicts-suggestion-reject-title": "Reject $1 suggestion?"
+	"wikibasemachineassisteddepicts-suggestion-confirm-title": "Confirm '$1' suggestion?",
+	"wikibasemachineassisteddepicts-suggestion-reject-title": "Reject '$1' suggestion?"
 }

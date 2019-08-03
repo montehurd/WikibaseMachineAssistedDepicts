@@ -69,7 +69,22 @@
 				"resources/widgets/SuggestionChosenWidget.mustache+dom"
 			],
 			"messages": [
-				"wikibasemachineassisteddepicts-summary"
+				"wikibasemachineassisteddepicts-summary",
+				"wikibasemachineassisteddepicts-suggestions-heading",
+				"wikibasemachineassisteddepicts-suggestions-confirmed-heading",
+				"wikibasemachineassisteddepicts-suggestions-rejected-heading",
+				"wikibasemachineassisteddepicts-save",
+				"wikibasemachineassisteddepicts-save-title",
+				"wikibasemachineassisteddepicts-skip",
+				"wikibasemachineassisteddepicts-skip-title",
+				"wikibasemachineassisteddepicts-confirm-all",
+				"wikibasemachineassisteddepicts-confirm-all-title",
+				"wikibasemachineassisteddepicts-reject-all",
+				"wikibasemachineassisteddepicts-reject-all-title",
+				"wikibasemachineassisteddepicts-reset",
+				"wikibasemachineassisteddepicts-reset-title",
+				"wikibasemachineassisteddepicts-suggestion-confirm-title",
+				"wikibasemachineassisteddepicts-suggestion-reject-title"
 			]
 		}
 	}

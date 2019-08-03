@@ -116,31 +116,36 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-confirm-all'],
-		label: 'Confirm all' // mw.message( 'wzikibasemachineassisteddepicts-summary' ).text()
+		title: mw.message( 'wikibasemachineassisteddepicts-confirm-all-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-confirm-all' ).text()
 	} )
 	.on('click', this.onConfirmAll, [], this );
 
 	var buttonRejectAll = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-reject-all'],
-		label: 'Reject all' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		title: mw.message( 'wikibasemachineassisteddepicts-reject-all-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-reject-all' ).text()
 	} )
 	.on('click', this.onRejectAll, [], this );
 
 	var buttonReset = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-reset'],
-		label: 'Reset' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		title: mw.message( 'wikibasemachineassisteddepicts-reset-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text()
 	} )
 	.on('click', this.onReset, [], this );
 
 	var buttonFinish = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-save'],
-		label: 'Save' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text()
 	} )
 	.on('click', this.onSave, [], this );
 
 	var buttonSkip = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-skip'],
-		label: 'Skip' // mw.message( 'wikibasemachineassisteddepicts-summary' ).text()
+		title: mw.message( 'wikibasemachineassisteddepicts-skip-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-skip' ).text()
 	} )
 	.on('click', this.onSkip, [], this );
 
