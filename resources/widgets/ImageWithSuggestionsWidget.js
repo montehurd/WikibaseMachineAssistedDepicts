@@ -2,6 +2,8 @@
 
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var SuggestionGroupWidget = require( './SuggestionGroupWidget.js' );
+var SuggestionGroupData = require( './../models/SuggestionGroupData.js' );
+var SuggestionGroupModeEnum = require( './../models/SuggestionGroupModeEnum.js' );
 
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
@@ -150,6 +152,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	.on('click', this.onSkip, [], this );
 
 	var suggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionGroupData: new SuggestionGroupData( SuggestionGroupModeEnum.DEFAULT ),
 		suggestionDataArray: this.suggestions
 	} )
 	.connect( this, {
@@ -158,6 +161,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 	var confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionGroupData: new SuggestionGroupData( SuggestionGroupModeEnum.CONFIRMED ),
 		suggestionDataArray: this.suggestionsConfirmed,
 		useSuggestionChosenWidgets: true
 	})
@@ -166,6 +170,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 	var rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionGroupData: new SuggestionGroupData( SuggestionGroupModeEnum.REJECTED ),
 		suggestionDataArray: this.suggestionsRejected,
 		useSuggestionChosenWidgets: true
 	})

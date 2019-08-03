@@ -2,13 +2,13 @@
 
 var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
 
-var	SuggestionUnchosenWidget = function WikibaseMachineAssistedDepictsSuggestionUnchosenWidget( config ) {
-	SuggestionUnchosenWidget.parent.call( this, $.extend( {}, config ) );
+var	SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( config ) {
+	SuggestionWidget.parent.call( this, $.extend( {}, config ) );
 	this.render();
 };
-OO.inheritClass( SuggestionUnchosenWidget, SuggestionBaseWidget );
+OO.inheritClass( SuggestionWidget, SuggestionBaseWidget );
 
-SuggestionUnchosenWidget.prototype.render = function () {
+SuggestionWidget.prototype.render = function () {
 	var addButton = new OO.ui.ButtonWidget( {
 		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-confirm-title', this.suggestionData.text ).text(),
 		icon: 'add',
@@ -26,7 +26,7 @@ SuggestionUnchosenWidget.prototype.render = function () {
 	}).on( 'click', this.emitDestructive, null, this);
 
 	this.renderTemplate(
-		'resources/widgets/SuggestionUnchosenWidget.mustache+dom',
+		'resources/widgets/SuggestionWidget.mustache+dom',
 		{
 			addButton: addButton,
 			suggestionLabel: suggestionLabel,
@@ -35,4 +35,4 @@ SuggestionUnchosenWidget.prototype.render = function () {
 	);
 };
 
-module.exports = SuggestionUnchosenWidget;
+module.exports = SuggestionWidget;

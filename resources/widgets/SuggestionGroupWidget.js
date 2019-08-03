@@ -1,13 +1,15 @@
 'use strict';
 
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
-var SuggestionUnchosenWidget = require( './SuggestionUnchosenWidget.js' );
-var SuggestionChosenWidget = require( './SuggestionChosenWidget.js' );
+var SuggestionWidget = require( './SuggestionWidget.js' );
+var SuggestionConfirmedWidget = require( './SuggestionConfirmedWidget.js' );
+var SuggestionRejectedWidget = require( './SuggestionRejectedWidget.js' );
+var SuggestionGroupModeEnum = require( './../models/SuggestionGroupModeEnum.js' );
 
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
+	this.suggestionGroupData = config.suggestionGroupData;
 	this.suggestionDataArray = config.suggestionDataArray;
-	this.useSuggestionChosenWidgets = !!config.useSuggestionChosenWidgets;
 	this.aggregate( {
 		add: 'itemAdd',
 		remove: 'itemRemove'
@@ -16,15 +18,21 @@ var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 };
 OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );
 
+SuggestionGroupWidget.prototype.getSuggestionForSuggestionData = function (suggestionData) {
+	switch( this.suggestionGroupData.mode ) {
+		case SuggestionGroupModeEnum.CONFIRMED:
+			return new SuggestionConfirmedWidget( { suggestionData: suggestionData } );
+			break;
+		case SuggestionGroupModeEnum.REJECTED:
+			return new SuggestionRejectedWidget( { suggestionData: suggestionData } );
+			break;
+		default:
+			return new SuggestionWidget( { suggestionData: suggestionData } );
+	}
+};
+
 SuggestionGroupWidget.prototype.render = function () {
-	var self = this;
-	var suggestionsWidgets = $.map( this.suggestionDataArray, function( suggestionData ) {
-		if (self.useSuggestionChosenWidgets) {
-			return new SuggestionChosenWidget({suggestionData: suggestionData});
-		}else{
-			return new SuggestionUnchosenWidget({suggestionData: suggestionData});
-		}
-	});
+	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionForSuggestionData.bind(this));
 
 	this.addItems(suggestionsWidgets);
 
