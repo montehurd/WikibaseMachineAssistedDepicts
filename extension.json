@@ -42,7 +42,6 @@
 				"resources/base/TemplateRenderingDOMLessGroupWidget.js",
 				"resources/models/ImageData.js",
 				"resources/models/SuggestionData.js",
-				"resources/models/SuggestionGroupData.js",
 				"resources/models/SuggestionGroupModeEnum.js",
 				"resources/widgets/ImageDepictsSuggestionsPanel.js",
 				"resources/widgets/ImageWithSuggestionsWidget.js",

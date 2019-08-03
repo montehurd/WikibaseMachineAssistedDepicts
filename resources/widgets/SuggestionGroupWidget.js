@@ -8,7 +8,7 @@ var SuggestionGroupModeEnum = require( './../models/SuggestionGroupModeEnum.js' 
 
 var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
-	this.suggestionGroupData = config.suggestionGroupData;
+	this.suggestionGroupMode = config.suggestionGroupMode;
 	this.suggestionDataArray = config.suggestionDataArray;
 	this.aggregate( {
 		add: 'itemAdd',
@@ -19,7 +19,7 @@ var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );
 
 SuggestionGroupWidget.prototype.getSuggestionForSuggestionData = function (suggestionData) {
-	switch( this.suggestionGroupData.mode ) {
+	switch( this.suggestionGroupMode ) {
 		case SuggestionGroupModeEnum.CONFIRMED:
 			return new SuggestionConfirmedWidget( { suggestionData: suggestionData } );
 			break;
