@@ -21,5 +21,7 @@
 	"wikibasemachineassisteddepicts-reset": "Reset",
 	"wikibasemachineassisteddepicts-reset-title": "Reset?",
 	"wikibasemachineassisteddepicts-suggestion-confirm-title": "Confirm '$1' suggestion?",
-	"wikibasemachineassisteddepicts-suggestion-reject-title": "Reject '$1' suggestion?"
+	"wikibasemachineassisteddepicts-suggestion-confirm-undo-title": "Undo '$1' suggestion confirmation?",
+	"wikibasemachineassisteddepicts-suggestion-reject-title": "Reject '$1' suggestion?",
+	"wikibasemachineassisteddepicts-suggestion-reject-undo-title": "Undo '$1' suggestion rejection?"
 }
