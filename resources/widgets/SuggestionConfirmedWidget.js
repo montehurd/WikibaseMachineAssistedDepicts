@@ -1,6 +1,7 @@
 'use strict';
 
 var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
+
 var	SuggestionConfirmedWidget = function WikibaseMachineAssistedDepictsSuggestionConfirmedWidget( config ) {
 	SuggestionConfirmedWidget.parent.call( this, $.extend( {}, config ) );
 	this.render();
