@@ -55,6 +55,7 @@
 				"resources/widgets/ImageDepictsSuggestionsPanel.less",
 				"resources/widgets/ImageWithSuggestionsWidget.less",
 				"resources/widgets/SuggestionGroupWidget.less",
+				"resources/widgets/SuggestionBaseWidget.less",
 				"resources/widgets/SuggestionWidget.less",
 				"resources/widgets/SuggestionConfirmedWidget.less",
 				"resources/widgets/SuggestionRejectedWidget.less"

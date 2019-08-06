@@ -4,6 +4,7 @@ var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
 
 var	SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( config ) {
 	SuggestionWidget.parent.call( this, $.extend( {}, config ) );
+	this.$element.addClass('wbmad-suggestion');
 	this.render();
 };
 OO.inheritClass( SuggestionWidget, SuggestionBaseWidget );
