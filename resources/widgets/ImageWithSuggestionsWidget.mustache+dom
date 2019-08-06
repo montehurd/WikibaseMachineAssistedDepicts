@@ -5,17 +5,11 @@
 <br>
 {{{suggestionsLabel}}}
 <br>
-<div class="wbmad-suggestions">
-  {{{suggestions}}}
-</div>
+{{{suggestions}}}
 <br>
 {{{confirmedLabel}}}
-<div class="wbmad-suggestions-confirmed">
-  {{{suggestionsConfirmed}}}
-</div>
+{{{suggestionsConfirmed}}}
 <br>
 {{{rejectedLabel}}}
-<div class="wbmad-suggestions-rejected">
-  {{{suggestionsRejected}}}
-</div>
+{{{suggestionsRejected}}}
 <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonSkip}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>
