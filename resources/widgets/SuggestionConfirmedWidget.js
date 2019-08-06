@@ -19,7 +19,7 @@ SuggestionConfirmedWidget.prototype.render = function () {
 		icon: 'close',
 		framed: false
 	})
-	.on( 'click', this.emitDestructive, null, this);
+	.on( 'click', this.emitDestructive, null, this );
 
 	this.renderTemplate(
 		'resources/widgets/SuggestionConfirmedWidget.mustache+dom',

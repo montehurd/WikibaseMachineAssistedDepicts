@@ -22,19 +22,25 @@ OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );
 SuggestionGroupWidget.prototype.getSuggestionForSuggestionData = function (suggestionData) {
 	switch( this.suggestionGroupMode ) {
 		case SuggestionGroupModeEnum.CONFIRMED:
-			return new SuggestionConfirmedWidget( { suggestionData: suggestionData } );
+			return new SuggestionConfirmedWidget( {
+				suggestionData: suggestionData
+			} );
 			break;
 		case SuggestionGroupModeEnum.REJECTED:
-			return new SuggestionRejectedWidget( { suggestionData: suggestionData } );
+			return new SuggestionRejectedWidget( {
+				suggestionData: suggestionData
+			} );
 			break;
 		default:
-			return new SuggestionWidget( { suggestionData: suggestionData } );
+			return new SuggestionWidget( {
+				suggestionData: suggestionData
+			} );
 	}
 };
 
 SuggestionGroupWidget.prototype.render = function () {
-	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionForSuggestionData.bind(this));
-	this.addItems(suggestionsWidgets);
+	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionForSuggestionData.bind( this ) );
+	this.addItems( suggestionsWidgets );
 	this.renderTemplate(
 		'resources/widgets/SuggestionGroupWidget.mustache+dom',
 		{
