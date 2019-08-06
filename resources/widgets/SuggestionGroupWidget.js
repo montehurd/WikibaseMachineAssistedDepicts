@@ -6,8 +6,9 @@ var SuggestionConfirmedWidget = require( './SuggestionConfirmedWidget.js' );
 var SuggestionRejectedWidget = require( './SuggestionRejectedWidget.js' );
 var SuggestionGroupModeEnum = require( './../models/SuggestionGroupModeEnum.js' );
 
-var	SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
+var SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGroupWidget( config ) {
 	SuggestionGroupWidget.parent.call( this, $.extend( {}, config ) );
+	this.$element.addClass('wbmad-suggestion-group');
 	this.suggestionGroupMode = config.suggestionGroupMode;
 	this.suggestionDataArray = config.suggestionDataArray;
 	this.aggregate( {

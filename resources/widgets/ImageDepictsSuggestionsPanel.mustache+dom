@@ -1,6 +1,3 @@
-<div class="wbmad-image-depicts-suggestions">
-  {{#imageWithSuggestionsWidgets}}
-  {{{.}}}
-  {{/imageWithSuggestionsWidgets}}
-  <br>
-</div>
+{{#imageWithSuggestionsWidgets}}
+{{{.}}}
+{{/imageWithSuggestionsWidgets}}

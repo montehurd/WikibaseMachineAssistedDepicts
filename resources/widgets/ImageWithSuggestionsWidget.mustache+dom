@@ -1,23 +1,21 @@
-<div class="wbmad-image-with-suggestions">
-  <img src="{{thumburl}}">
-  <br>
-  {{{imageDescriptionLabel}}}
-  <br>
-  <br>
-  {{{suggestionsLabel}}}
-  <br>
-  <div class="wbmad-suggestions">
-    {{{suggestions}}}
-  </div>
-  <br>
-  {{{confirmedLabel}}}
-  <div class="wbmad-suggestions-confirmed">
-    {{{suggestionsConfirmed}}}
-  </div>
-  <br>
-  {{{rejectedLabel}}}
-  <div class="wbmad-suggestions-rejected">
-    {{{suggestionsRejected}}}
-  </div>
-  <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonSkip}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>
+<img src="{{thumburl}}">
+<br>
+{{{imageDescriptionLabel}}}
+<br>
+<br>
+{{{suggestionsLabel}}}
+<br>
+<div class="wbmad-suggestions">
+  {{{suggestions}}}
 </div>
+<br>
+{{{confirmedLabel}}}
+<div class="wbmad-suggestions-confirmed">
+  {{{suggestionsConfirmed}}}
+</div>
+<br>
+{{{rejectedLabel}}}
+<div class="wbmad-suggestions-rejected">
+  {{{suggestionsRejected}}}
+</div>
+<div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonSkip}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>

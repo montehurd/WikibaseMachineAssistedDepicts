@@ -6,6 +6,7 @@ var SuggestionGroupModeEnum = require( './../models/SuggestionGroupModeEnum.js' 
 
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
+	this.$element.addClass('wbmad-image-with-suggestions');
 	this.imageData = config.imageData;
 	this.suggestions = this.imageData.suggestions;
 	this.suggestionsOriginal = this.deepArrayCopy( this.suggestions );

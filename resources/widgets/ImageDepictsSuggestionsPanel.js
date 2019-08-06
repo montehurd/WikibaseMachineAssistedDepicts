@@ -5,6 +5,7 @@ var ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' );
 
 var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPanel( config ) {
 	ImageDepictsSuggestionsPanel.parent.call( this, $.extend( {}, config ) );
+	this.$element.addClass('wbmad-image-depicts-suggestions');
 	this.labelTop = config.labelTop;
 	this.labelBottom = config.labelBottom;
 	this.imageDataArray = config.imageDataArray;
