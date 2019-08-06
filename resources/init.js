@@ -45,7 +45,7 @@
 	};
 
 	var showFailureMessage = function() {
-		$( '#content' ).append('<p>Oh no, something went wrong!</p>');
+		$( '#content' ).append( '<p>Oh no, something went wrong!</p>' );
 	};
 
 	var sampleQueryPageURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&gqplimit=15&origin=*";
