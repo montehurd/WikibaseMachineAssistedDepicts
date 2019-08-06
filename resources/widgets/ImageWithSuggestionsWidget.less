@@ -6,6 +6,7 @@
   padding: 20px;
   margin-bottom: 30px;
   border-radius: 4px;
+  display: inline-block;
   img {
     margin-bottom: 10px;
     border: 1px dashed lightGray;
@@ -29,7 +30,13 @@
       background-color: @color-suggestion-background;
     }
   }
-  .wbmad-button-skip, .wbmad-button-confirm-all, .wbmad-button-reject-all, .wbmad-button-reset {
-    margin-left: 5px;
+  .wbmad-buttons {
+    margin-top: 20px;
+    .wbmad-button-save, .wbmad-button-skip, .wbmad-button-confirm-all, .wbmad-button-reject-all, .wbmad-button-reset {
+      display: inline-block;
+      margin: 10px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+    }
   }
 }
