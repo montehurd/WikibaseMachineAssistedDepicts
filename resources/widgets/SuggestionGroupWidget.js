@@ -19,7 +19,7 @@ var SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 };
 OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );
 
-SuggestionGroupWidget.prototype.getSuggestionForSuggestionData = function (suggestionData) {
+SuggestionGroupWidget.prototype.getSuggestionWidgetForSuggestionData = function (suggestionData) {
 	switch( this.suggestionGroupMode ) {
 		case SuggestionGroupModeEnum.CONFIRMED:
 			return new SuggestionConfirmedWidget( {
@@ -39,7 +39,7 @@ SuggestionGroupWidget.prototype.getSuggestionForSuggestionData = function (sugge
 };
 
 SuggestionGroupWidget.prototype.render = function () {
-	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionForSuggestionData.bind( this ) );
+	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) );
 	this.addItems( suggestionsWidgets );
 	this.renderTemplate(
 		'resources/widgets/SuggestionGroupWidget.mustache+dom',
