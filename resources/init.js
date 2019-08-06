@@ -20,7 +20,7 @@
 	var randomSuggestions = function() {
 		var array = 'this,that,other,bird,dog,cat,fish,horse,goat,frog,soup,chicken,stick,sky,mountain,house,beach,face,eye,book,shirt,watch,hair,arm,bricks,map,hand,window,floor,lamp,river,can,logo,bottle,form,stamp,chart,graph,lines'.split(',');
 		array = $.map( array, function( string ) {
-			return new SuggestionData(string);
+			return new SuggestionData( string );
 		});
 		var shuffled = array.sort( function () {
 			return .5 - Math.random();
@@ -29,7 +29,7 @@
 	};
 
 	var getImageDataForQueryResponsePage = function( page ) {
-		return !page.imageinfo ? null : new ImageData(page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions());
+		return !page.imageinfo ? null : new ImageData( page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions() );
 	};
 
 	var handleQueryResponse = function( response ) {
