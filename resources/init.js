@@ -13,7 +13,7 @@
 			'This is some other stuff',
 			'This is a dodad'
 		];
-		var randomNumber = Math.floor(Math.random()*array.length);
+		var randomNumber = Math.floor( Math.random() * array.length );
 		return array[randomNumber];
 	};
 
@@ -22,18 +22,18 @@
 		array = $.map( array, function( string ) {
 			return new SuggestionData(string);
 		});
-		var shuffled = array.sort(function(){return .5 - Math.random()});
-		return shuffled.slice(0, Math.min(15, Math.floor(Math.random() * array.length) + 5));
-	};
-
-	var extractImageDataFromQueryResponse = function(response) {
-		return $.map( response.query.pages, function( page ) {
-			return !page.imageinfo ? null : new ImageData(page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions());
+		var shuffled = array.sort( function () {
+			return .5 - Math.random();
 		});
+		return shuffled.slice( 0, Math.min( 15, Math.floor( Math.random() * array.length ) + 5 ) );
 	};
 
-	var handleQueryResponse = function(response) {
-		var imageDataArray = extractImageDataFromQueryResponse(response);
+	var getImageDataForQueryResponsePage = function( page ) {
+		return !page.imageinfo ? null : new ImageData(page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions());
+	};
+
+	var handleQueryResponse = function( response ) {
+		var imageDataArray = $.map( response.query.pages, getImageDataForQueryResponsePage );
 
 		var imageDepictsSuggestionsPanel = new ImageDepictsSuggestionsPanel( {
 			imageDataArray: imageDataArray
@@ -45,13 +45,13 @@
 	};
 
 	var showFailureMessage = function() {
-		$('#content').append('<p>Oh no, something went wrong!</p>');
+		$( '#content' ).append('<p>Oh no, something went wrong!</p>');
 	};
 
 	var sampleQueryPageURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&gqplimit=15&origin=*";
 
-	$.getJSON(sampleQueryPageURL)
-		.done(handleQueryResponse)
-	 	.fail(showFailureMessage);
+	$.getJSON( sampleQueryPageURL )
+		.done( handleQueryResponse )
+	 	.fail( showFailureMessage );
 
 }() );

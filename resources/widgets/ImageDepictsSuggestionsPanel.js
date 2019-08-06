@@ -11,14 +11,14 @@ var	ImageDepictsSuggestionsPanel = function WikibaseMachineAssistedDepictsImageD
 };
 OO.inheritClass( ImageDepictsSuggestionsPanel, TemplateRenderingDOMLessGroupWidget );
 
-ImageDepictsSuggestionsPanel.prototype.getImageWithSuggestionsWidgetForImageData = function ( imageData ) {
+var getImageWithSuggestionsWidgetForImageData = function ( imageData ) {
 	return new ImageWithSuggestionsWidget({
 		imageData: imageData
 	});
 };
 
 ImageDepictsSuggestionsPanel.prototype.render = function () {
-	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, this.getImageWithSuggestionsWidgetForImageData.bind( this ));
+	var imageWithSuggestionsWidgets = $.map( this.imageDataArray, getImageWithSuggestionsWidgetForImageData );
 	this.addItems(imageWithSuggestionsWidgets);
 	this.renderTemplate(
 		'resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom',

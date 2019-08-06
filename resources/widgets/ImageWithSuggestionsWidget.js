@@ -9,22 +9,22 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.$element.addClass('wbmad-image-with-suggestions');
 	this.imageData = config.imageData;
 	this.suggestions = this.imageData.suggestions;
-	this.suggestionsOriginal = this.deepArrayCopy( this.suggestions );
+	this.suggestionsOriginal = deepArrayCopy( this.suggestions );
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = [];
 	this.render();
 };
 OO.inheritClass( ImageWithSuggestionsWidget, TemplateRenderingDOMLessGroupWidget );
 
-ImageWithSuggestionsWidget.prototype.deepArrayCopy = function (array) {
+var deepArrayCopy = function (array) {
 	return $.extend( true, [], array );
 };
 
 ImageWithSuggestionsWidget.prototype.getOriginalSuggestions = function () {
-	return this.deepArrayCopy( this.suggestionsOriginal );
+	return deepArrayCopy( this.suggestionsOriginal );
 };
 
-ImageWithSuggestionsWidget.prototype.moveItemBetweenArrays = function (item, fromArray, toArray) {
+var moveItemBetweenArrays = function (item, fromArray, toArray) {
 	if (toArray.indexOf(item) === -1) {
 		toArray.push(item);
 		var fromIndex = fromArray.indexOf(item);
@@ -35,22 +35,22 @@ ImageWithSuggestionsWidget.prototype.moveItemBetweenArrays = function (item, fro
 };
 
 ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionWidget) {
-	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsConfirmed);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsConfirmed);
 	this.render();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectSuggestion = function (suggestionWidget) {
-	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsRejected);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsRejected);
 	this.render();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectConfirmedSuggestion = function (suggestionWidget) {
-	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
 	this.render();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectedRejectedSuggestion = function (suggestionWidget) {
-	this.moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
 	this.render();
 };
 
