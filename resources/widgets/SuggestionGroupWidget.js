@@ -34,9 +34,7 @@ SuggestionGroupWidget.prototype.getSuggestionForSuggestionData = function (sugge
 
 SuggestionGroupWidget.prototype.render = function () {
 	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionForSuggestionData.bind(this));
-
 	this.addItems(suggestionsWidgets);
-
 	this.renderTemplate(
 		'resources/widgets/SuggestionGroupWidget.mustache+dom',
 		{

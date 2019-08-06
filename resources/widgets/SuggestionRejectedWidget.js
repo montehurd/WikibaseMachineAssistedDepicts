@@ -18,7 +18,8 @@ SuggestionRejectedWidget.prototype.render = function () {
 		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-reject-undo-title', this.suggestionData.text ).text(),
 		icon: 'close',
 		framed: false
-	}).on( 'click', this.emitDestructive, null, this);
+	})
+	.on( 'click', this.emitDestructive, null, this);
 
 	this.renderTemplate(
 		'resources/widgets/SuggestionRejectedWidget.mustache+dom',

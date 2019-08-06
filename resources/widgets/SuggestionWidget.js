@@ -14,7 +14,8 @@ SuggestionWidget.prototype.render = function () {
 		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-confirm-title', this.suggestionData.text ).text(),
 		icon: 'add',
 		framed: false
-	}).on( 'click', this.emitProgressive, null, this);
+	})
+	.on( 'click', this.emitProgressive, null, this);
 
 	var suggestionLabel = new OO.ui.LabelWidget( {
 		label: this.suggestionData.text

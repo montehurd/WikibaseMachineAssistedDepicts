@@ -5,7 +5,6 @@ var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingD
 var	SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBaseWidget( config ) {
 	config.classes = ['wbmad-suggestion-base'];
 	SuggestionBaseWidget.parent.call( this, $.extend( {}, config ) );
-
 	this.suggestionData = config.suggestionData;
 };
 OO.inheritClass( SuggestionBaseWidget, TemplateRenderingDOMLessGroupWidget );
