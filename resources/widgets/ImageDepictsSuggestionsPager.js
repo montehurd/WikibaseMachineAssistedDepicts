@@ -33,15 +33,15 @@ ImageDepictsSuggestionsPager.prototype.fetchAndShowPageIfScrolledToBottom = func
 }
 
 const queryURLWithCountAndOffset = function( count, offset ) {
+	// TODO: switch to middleware endpoint once it exists
 	var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&origin=*"
 		+ "&gqplimit=" + count;
-
-	if (offset > 0) {
-		url = url
-			+ "&gqpoffset=" + (count * offset)
-			+ "&continue=gqpoffset||";
+	if (offset == 0) {
+		return url;
 	}
-	return url;
+	return url
+		+ "&gqpoffset=" + (count * offset)
+		+ "&continue=gqpoffset||";
 }
 
 var randomDescription = function() {
@@ -67,6 +67,7 @@ var randomSuggestions = function() {
 };
 
 var getImageDataForQueryResponsePage = function( page ) {
+	// TODO: grab actual description and suggestions from middleware endpoint once it exists, then delete the random methods
 	return !page.imageinfo ? null : new ImageData( page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions() );
 };
 

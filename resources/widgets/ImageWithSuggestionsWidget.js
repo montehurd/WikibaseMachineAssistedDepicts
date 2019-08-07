@@ -95,6 +95,7 @@ ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
 };
 
 ImageWithSuggestionsWidget.prototype.onSave = function () {
+	// TODO: wire up to middleware 'save' endpoint once it exists
 	alert(this.getSaveDebugString());
 };
 
