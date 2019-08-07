@@ -32,7 +32,7 @@ ImageDepictsSuggestionsPager.prototype.fetchAndShowPageIfScrolledToBottom = func
 	this.fetchAndShowPage();
 }
 
-const queryURLWithCountAndOffset = function( count, offset ) {
+var queryURLWithCountAndOffset = function( count, offset ) {
 	// TODO: switch to middleware endpoint once it exists
 	var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&origin=*"
 		+ "&gqplimit=" + count;
