@@ -1,6 +1,6 @@
 'use strict';
 
-var DOMLessGroupWidget = require( 'wikibase.mediainfo.base' ).DOMLessGroupWidget;
+var DOMLessGroupWidget = require( './DOMLessGroupWidget.js' );
 
 var	TemplateRenderingDOMLessGroupWidget = function WikibaseMachineAssistedDepictsTemplateRenderingDOMLessGroupWidget( config ) {
 	config = config || {};

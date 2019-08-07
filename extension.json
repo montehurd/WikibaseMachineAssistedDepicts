@@ -39,6 +39,7 @@
 		"ext.WikibaseMachineAssistedDepicts": {
 			"packageFiles": [
 				"resources/init.js",
+				"resources/base/DOMLessGroupWidget.js",
 				"resources/base/TemplateRenderingDOMLessGroupWidget.js",
 				"resources/models/ImageData.js",
 				"resources/models/SuggestionData.js",
