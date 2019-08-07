@@ -32,7 +32,7 @@ ImageDepictsSuggestionsPager.prototype.fetchAndShowPageIfScrolledToBottom = func
 	this.fetchAndShowPage();
 }
 
-const queryURLWithOffset = function( count, offset ) {
+const queryURLWithCountAndOffset = function( count, offset ) {
 	var url = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&generator=querypage&formatversion=2&iiprop=url&iiurlwidth=320&iiurlparam=&gqppage=Uncategorizedimages&origin=*"
 		+ "&gqplimit=" + count;
 
@@ -79,7 +79,7 @@ ImageDepictsSuggestionsPager.prototype.showPageForQueryResponse = function( resp
 };
 
 ImageDepictsSuggestionsPager.prototype.fetchAndShowPage = function () {
-	$.getJSON( queryURLWithOffset(15, $( '.wbmad-image-depicts-suggestions-page' ).length) )
+	$.getJSON( queryURLWithCountAndOffset(10, $( '.wbmad-image-depicts-suggestions-page' ).length) )
 		.done( this.showPageForQueryResponse.bind(this) )
 		.fail( showFailureMessage );
 };
