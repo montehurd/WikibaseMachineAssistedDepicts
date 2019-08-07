@@ -43,7 +43,8 @@
 				"resources/models/ImageData.js",
 				"resources/models/SuggestionData.js",
 				"resources/models/SuggestionGroupModeEnum.js",
-				"resources/widgets/ImageDepictsSuggestionsPanel.js",
+				"resources/widgets/ImageDepictsSuggestionsPager.js",
+				"resources/widgets/ImageDepictsSuggestionsPage.js",
 				"resources/widgets/ImageWithSuggestionsWidget.js",
 				"resources/widgets/SuggestionBaseWidget.js",
 				"resources/widgets/SuggestionGroupWidget.js",
@@ -52,7 +53,8 @@
 				"resources/widgets/SuggestionRejectedWidget.js"
 			],
 			"styles": [
-				"resources/widgets/ImageDepictsSuggestionsPanel.less",
+				"resources/widgets/ImageDepictsSuggestionsPager.less",
+				"resources/widgets/ImageDepictsSuggestionsPage.less",
 				"resources/widgets/ImageWithSuggestionsWidget.less",
 				"resources/widgets/SuggestionGroupWidget.less",
 				"resources/widgets/SuggestionBaseWidget.less",
@@ -66,7 +68,8 @@
 				"mediawiki.template.mustache+dom"
 			],
 			"templates": [
-				"resources/widgets/ImageDepictsSuggestionsPanel.mustache+dom",
+				"resources/widgets/ImageDepictsSuggestionsPager.mustache+dom",
+				"resources/widgets/ImageDepictsSuggestionsPage.mustache+dom",
 				"resources/widgets/ImageWithSuggestionsWidget.mustache+dom",
 				"resources/widgets/SuggestionGroupWidget.mustache+dom",
 				"resources/widgets/SuggestionWidget.mustache+dom",
