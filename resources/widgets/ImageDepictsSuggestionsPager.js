@@ -67,8 +67,9 @@ var randomSuggestions = function() {
 };
 
 var getImageDataForQueryResponsePage = function( page ) {
-	// TODO: grab actual description and suggestions from middleware endpoint once it exists, then delete the random methods
-	return !page.imageinfo ? null : new ImageData( page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions() );
+	// TODO: grab actual description and suggestions from middleware endpoint once it exists,
+	// then delete the random methods and the `thumbwidth != 320` check (which the middleware will enforce)
+	return ( !page.imageinfo || page.imageinfo[0].thumbwidth != 320 ) ? null : new ImageData( page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions() );
 };
 
 ImageDepictsSuggestionsPager.prototype.showPageForQueryResponse = function( response ) {
