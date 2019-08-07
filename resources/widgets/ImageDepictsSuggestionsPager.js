@@ -46,10 +46,10 @@ var queryURLWithCountAndOffset = function( count, offset ) {
 
 var randomDescription = function() {
 	var array = [
-		'This is a thing',
-		'This is another such thing',
-		'This is some other stuff',
-		'This is a dodad'
+		'This is a thing. This is a random description.',
+		'This is another such thing. This is a random description.',
+		'This is some other stuff. This is a random description.',
+		'This is a dodad. This is a random description.'
 	];
 	var randomNumber = Math.floor( Math.random() * array.length );
 	return array[randomNumber];

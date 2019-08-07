@@ -6,35 +6,61 @@
   padding: 1em;
   margin-bottom: 2em;
   border-radius: 0.2em;
-  img {
-    margin-bottom: 0.5em;
-    border: 0.05em solid lightGray;
-    background-color: lightGray;
-  }
+  width: fit-content;
   .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
     background-color: transparent;
   }
-  .wbmad-button-confirm-all {
-    .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
-      background-color: @color-suggestion-background-confirmed;
-    }
-  }
-  .wbmad-button-reject-all {
-    .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
-      background-color: @color-suggestion-background-rejected;
-    }
-  }
-  .wbmad-button-reset {
-    .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
-      background-color: @color-suggestion-background;
-    }
-  }
-  .wbmad-buttons {
-    margin-top: 1.1em;
-    .wbmad-button-save, .wbmad-button-skip, .wbmad-button-confirm-all, .wbmad-button-reject-all, .wbmad-button-reset {
-      display: inline-block;
-      margin-top: 0.8em;
-      margin-right: 0.8em;
+  .wbmad-image-with-suggestions-container-outer {
+    width: 100%;
+    .wbmad-image-with-suggestions-container-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      .wbmad-image-with-suggestions-contents-left {
+        margin-bottom: 1em;
+        width: 18em;
+        margin-right: 1em;
+        img {
+          margin-bottom: 0.5em;
+          border: 0.05em solid lightGray;
+          background-color: lightGray;
+          width: inherit;
+        }
+        label {
+          width: inherit;
+          font-style: italic;
+        }
+      }
+      .wbmad-image-with-suggestions-container-wrap {
+        display: flex;
+        flex: 1;
+        min-width: 20em;
+        .wbmad-image-with-suggestions-contents-right {
+          .wbmad-buttons {
+            margin-top: 1.1em;
+            .oo-ui-buttonElement {
+              display: inline-block;
+              margin-top: 0.8em;
+              margin-right: 0.8em;
+            }
+            .wbmad-button-confirm-all {
+              .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
+                background-color: @color-suggestion-background-confirmed;
+              }
+            }
+            .wbmad-button-reject-all {
+              .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
+                background-color: @color-suggestion-background-rejected;
+              }
+            }
+            .wbmad-button-reset {
+              .oo-ui-buttonElement-button, .oo-ui-buttonElement-button:hover {
+                background-color: @color-suggestion-background;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
