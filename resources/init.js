@@ -4,6 +4,6 @@
 
 	var ImageDepictsSuggestionsPager = require( './widgets/ImageDepictsSuggestionsPager.js' );
 
-	$( '#content' ).append( new ImageDepictsSuggestionsPager().$element );
+	$( '#bodyContent' ).append( new ImageDepictsSuggestionsPager().$element );
 
 }() );

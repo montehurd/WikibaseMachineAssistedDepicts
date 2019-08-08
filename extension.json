@@ -96,6 +96,10 @@
 				"wikibasemachineassisteddepicts-suggestion-confirm-undo-title",
 				"wikibasemachineassisteddepicts-suggestion-reject-title",
 				"wikibasemachineassisteddepicts-suggestion-reject-undo-title"
+			],
+			"targets" : [
+				"mobile",
+				"desktop"
 			]
 		}
 	}
