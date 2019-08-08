@@ -12,6 +12,34 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.suggestionsOriginal = deepArrayCopy( this.suggestions );
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = [];
+
+	this.suggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionGroupMode: SuggestionGroupModeEnum.DEFAULT,
+		suggestionDataArray: this.suggestions
+	} )
+	.connect( this, {
+		itemAdd: 'onConfirmSuggestion',
+		itemRemove: 'onRejectSuggestion'
+	} );
+
+	this.confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionGroupMode: SuggestionGroupModeEnum.CONFIRMED,
+		suggestionDataArray: this.suggestionsConfirmed,
+		useSuggestionChosenWidgets: true
+	})
+	.connect( this, {
+		itemRemove: 'onRejectConfirmedSuggestion'
+	} );
+
+	this.rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
+		suggestionGroupMode: SuggestionGroupModeEnum.REJECTED,
+		suggestionDataArray: this.suggestionsRejected,
+		useSuggestionChosenWidgets: true
+	})
+	.connect( this, {
+		itemRemove: 'onRejectedRejectedSuggestion'
+	} );
+
 	this.render();
 };
 OO.inheritClass( ImageWithSuggestionsWidget, TemplateRenderingDOMLessGroupWidget );
@@ -34,45 +62,54 @@ var moveItemBetweenArrays = function (item, fromArray, toArray) {
 	};
 };
 
+ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
+	this.suggestionGroupWidget.suggestionDataArray = this.suggestions;
+	this.confirmedSuggestionGroupWidget.suggestionDataArray = this.suggestionsConfirmed;
+	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.suggestionsRejected;
+	this.suggestionGroupWidget.render();
+	this.confirmedSuggestionGroupWidget.render();
+	this.rejectedSuggestionGroupWidget.render();
+}
+
 ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionWidget) {
 	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsConfirmed);
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectSuggestion = function (suggestionWidget) {
 	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsRejected);
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectConfirmedSuggestion = function (suggestionWidget) {
 	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectedRejectedSuggestion = function (suggestionWidget) {
 	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onConfirmAll = function () {
 	this.suggestions = [];
 	this.suggestionsConfirmed = this.getOriginalSuggestions();
 	this.suggestionsRejected = [];
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectAll = function () {
 	this.suggestions = [];
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = this.getOriginalSuggestions();
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onReset = function () {
 	this.suggestions = this.getOriginalSuggestions();
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = [];
-	this.render();
+	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
@@ -152,33 +189,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} )
 	.on('click', this.onSkip, [], this );
 
-	var suggestionGroupWidget = new SuggestionGroupWidget({
-		suggestionGroupMode: SuggestionGroupModeEnum.DEFAULT,
-		suggestionDataArray: this.suggestions
-	} )
-	.connect( this, {
-		itemAdd: 'onConfirmSuggestion',
-		itemRemove: 'onRejectSuggestion'
-	} );
-
-	var confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
-		suggestionGroupMode: SuggestionGroupModeEnum.CONFIRMED,
-		suggestionDataArray: this.suggestionsConfirmed,
-		useSuggestionChosenWidgets: true
-	})
-	.connect( this, {
-		itemRemove: 'onRejectConfirmedSuggestion'
-	} );
-
-	var rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
-		suggestionGroupMode: SuggestionGroupModeEnum.REJECTED,
-		suggestionDataArray: this.suggestionsRejected,
-		useSuggestionChosenWidgets: true
-	})
-	.connect( this, {
-		itemRemove: 'onRejectedRejectedSuggestion'
-	} );
-
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
@@ -186,9 +196,9 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			suggestionsLabel: suggestionsLabel,
 			confirmedLabel: confirmedLabel,
 			rejectedLabel: rejectedLabel,
-			suggestions: suggestionGroupWidget,
-			suggestionsConfirmed: confirmedSuggestionGroupWidget,
-			suggestionsRejected: rejectedSuggestionGroupWidget,
+			suggestions: this.suggestionGroupWidget,
+			suggestionsConfirmed: this.confirmedSuggestionGroupWidget,
+			suggestionsRejected: this.rejectedSuggestionGroupWidget,
 			thumburl: this.imageData.thumburl,
 			buttonConfirmAll: buttonConfirmAll,
 			buttonRejectAll: buttonRejectAll,
