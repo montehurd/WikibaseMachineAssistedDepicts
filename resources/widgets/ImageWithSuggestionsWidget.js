@@ -122,22 +122,20 @@ ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
 		'\n' +
 		$.map( this.suggestionsConfirmed, function( suggestion ) {
 			return suggestion.text;
-		}).join('\n') +
+		}).join(', ') +
 		'\n\n' +
 		'DOESN\'T DEPICT:' +
 		'\n' +
 		$.map( this.suggestionsRejected, function( suggestion ) {
 			return suggestion.text;
-		}).join('\n');
+		}).join(', ');
 };
 
 ImageWithSuggestionsWidget.prototype.onSave = function () {
 	// TODO: wire up to middleware 'save' endpoint once it exists
-	alert(this.getSaveDebugString());
-};
-
-ImageWithSuggestionsWidget.prototype.onSkip = function () {
-	this.$element.slideUp();
+	if ( confirm( this.getSaveDebugString() ) ) {
+		this.$element.slideUp();
+	};
 };
 
 ImageWithSuggestionsWidget.prototype.render = function () {
@@ -182,13 +180,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} )
 	.on('click', this.onSave, [], this );
 
-	var buttonSkip = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-skip'],
-		title: mw.message( 'wikibasemachineassisteddepicts-skip-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-skip' ).text()
-	} )
-	.on('click', this.onSkip, [], this );
-
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
@@ -203,8 +194,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			buttonConfirmAll: buttonConfirmAll,
 			buttonRejectAll: buttonRejectAll,
 			buttonReset: buttonReset,
-			buttonFinish: buttonFinish,
-			buttonSkip: buttonSkip
+			buttonFinish: buttonFinish
 		}
 	);
 };

@@ -15,7 +15,7 @@
         <br>
         {{{rejectedLabel}}}
         {{{suggestionsRejected}}}
-        <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonSkip}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>
+        <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>
       </div>
     </div>
   </div>
