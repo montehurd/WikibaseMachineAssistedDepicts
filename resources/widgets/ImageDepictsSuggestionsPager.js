@@ -8,6 +8,14 @@ var ImageData = require( './../models/ImageData.js' );
 var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPager( config ) {
 	ImageDepictsSuggestionsPager.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-image-depicts-suggestions-pager');
+
+	this.buttonMore = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-more'],
+		title: mw.message( 'wikibasemachineassisteddepicts-more-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-more' ).text()
+	} )
+	.on('click', this.onMore, [], this );
+
 	this.render();
 	// $(window).scroll(this.fetchAndShowPageIfScrolledToBottom.bind(this));
 	this.fetchAndShowPage();
@@ -19,17 +27,10 @@ ImageDepictsSuggestionsPager.prototype.onMore = function () {
 };
 
 ImageDepictsSuggestionsPager.prototype.render = function () {
-	var buttonMore = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-more'],
-		title: mw.message( 'wikibasemachineassisteddepicts-more-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-more' ).text()
-	} )
-	.on('click', this.onMore, [], this );
-
 	this.renderTemplate(
 		'resources/widgets/ImageDepictsSuggestionsPager.mustache+dom',
 		{
-			buttonMore: buttonMore
+			buttonMore: this.buttonMore
 		}
 	);
 };
@@ -87,12 +88,18 @@ var getImageDataForQueryResponsePage = function( page ) {
 	return ( !page.imageinfo || page.imageinfo[0].thumbwidth != 320 ) ? null : new ImageData( page.title, page.imageinfo[0].thumburl, randomDescription(), randomSuggestions() );
 };
 
+var updateMoreButtonVisibility = function ( resultsFound ) {
+	$( '.wbmad-button-more' ).css( 'display', resultsFound ? 'block' : 'none' );
+}
+
 ImageDepictsSuggestionsPager.prototype.showPageForQueryResponse = function( response ) {
 	$( '#wbmad-image-depicts-suggestions-pages' ).append(
 			new ImageDepictsSuggestionsPage({
 				imageDataArray: $.map( response.query.pages, getImageDataForQueryResponsePage )
 			}).$element
 	);
+	var resultsFound = ( response.query.pages && response.query.pages.length > 0 );
+	updateMoreButtonVisibility( resultsFound );
 };
 
 ImageDepictsSuggestionsPager.prototype.fetchAndShowPage = function () {
