@@ -96,7 +96,7 @@ ImageDepictsSuggestionsPager.prototype.showPageForQueryResponse = function( resp
 };
 
 ImageDepictsSuggestionsPager.prototype.fetchAndShowPage = function () {
-	$.getJSON( queryURLWithCountAndOffset(10, $( '.wbmad-image-depicts-suggestions-page' ).length) )
+	$.getJSON( queryURLWithCountAndOffset(20, $( '.wbmad-image-depicts-suggestions-page' ).length) )
 		.done( this.showPageForQueryResponse.bind(this) )
 		.fail( showFailureMessage );
 };
