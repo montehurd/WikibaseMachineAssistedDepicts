@@ -9,7 +9,7 @@ var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageD
 	ImageDepictsSuggestionsPager.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-image-depicts-suggestions-pager');
 	this.render();
-	$(window).scroll(this.fetchAndShowPageIfScrolledToBottom.bind(this));
+	// $(window).scroll(this.fetchAndShowPageIfScrolledToBottom.bind(this));
 	this.fetchAndShowPage();
 };
 OO.inheritClass( ImageDepictsSuggestionsPager, TemplateRenderingDOMLessGroupWidget );
@@ -34,6 +34,7 @@ ImageDepictsSuggestionsPager.prototype.render = function () {
 	);
 };
 
+/*
 var isScrolledToBottom = function() {
 	return ( $( window ).scrollTop() + $( window ).height() == $( document ).height() );
 }
@@ -44,6 +45,7 @@ ImageDepictsSuggestionsPager.prototype.fetchAndShowPageIfScrolledToBottom = func
 	}
 	this.fetchAndShowPage();
 }
+*/
 
 var queryURLWithCountAndOffset = function( count, offset ) {
 	// TODO: switch to middleware endpoint once it exists
