@@ -14,10 +14,23 @@ var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageD
 };
 OO.inheritClass( ImageDepictsSuggestionsPager, TemplateRenderingDOMLessGroupWidget );
 
+ImageDepictsSuggestionsPager.prototype.onMore = function () {
+	this.fetchAndShowPage();
+};
+
 ImageDepictsSuggestionsPager.prototype.render = function () {
+	var buttonMore = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-more'],
+		title: mw.message( 'wikibasemachineassisteddepicts-more-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-more' ).text()
+	} )
+	.on('click', this.onMore, [], this );
+
 	this.renderTemplate(
 		'resources/widgets/ImageDepictsSuggestionsPager.mustache+dom',
-		{}
+		{
+			buttonMore: buttonMore
+		}
 	);
 };
 
