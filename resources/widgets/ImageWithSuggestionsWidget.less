@@ -6,20 +6,26 @@
   padding: 1em;
   margin-bottom: 2em;
   border-radius: 0.2em;
-  display: inline-block;
+  @media screen and (max-width: 720px) {
+    display: inline-block;
+  }
   .oo-ui-buttonElement-frameless.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
     background-color: transparent;
   }
   .wbmad-image-with-suggestions-container-outer {
     width: 100%;
     .wbmad-image-with-suggestions-container-inner {
-      display: flex;
-      flex-wrap: wrap;
+      @media not screen and (max-width: 720px) {
+        display: flex;
+        flex-wrap: wrap;
+      }
       justify-content: flex-start;
       .wbmad-image-with-suggestions-contents-left {
         margin-bottom: 1em;
         width: 20em;
-        margin-right: 1em;
+        @media not screen and (max-width: 720px) {
+          margin-right: 1em;
+        }
         img {
           margin-bottom: 0.5em;
           border: 0.05em solid lightGray;
@@ -36,8 +42,8 @@
         flex: 1;
         min-width: 20em;
         .wbmad-image-with-suggestions-contents-right {
+          width: 100%;
           .wbmad-buttons {
-            margin-top: 1.1em;
             .oo-ui-buttonElement {
               display: inline-block;
               margin-top: 0.8em;
