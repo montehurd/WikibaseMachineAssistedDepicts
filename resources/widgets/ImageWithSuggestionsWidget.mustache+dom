@@ -1,16 +1,13 @@
 <div class="wbmad-image-with-suggestions-container-outer">
   <div class="wbmad-image-with-suggestions-container-inner">
     <div class="wbmad-image-with-suggestions-contents-left">
-      <img src="{{thumburl}}">
       {{{imageDescriptionLabel}}}
+      <img src="{{thumburl}}" title="{{imageTagTitle}}">
     </div>
     <div class="wbmad-image-with-suggestions-container-wrap">
       <div class="wbmad-image-with-suggestions-contents-right">
-        {{{confirmedLabel}}}
         {{{suggestionsConfirmed}}}
-        {{{suggestionsLabel}}}
         {{{suggestions}}}
-        {{{rejectedLabel}}}
         {{{suggestionsRejected}}}
         <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>
       </div>

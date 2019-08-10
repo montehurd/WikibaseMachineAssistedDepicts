@@ -12,8 +12,10 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.suggestionsOriginal = deepArrayCopy( this.suggestions );
 	this.suggestionsConfirmed = [];
 	this.suggestionsRejected = [];
+	this.imageTitle = this.imageData.title.split(':').pop();
 
 	this.suggestionGroupWidget = new SuggestionGroupWidget({
+		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-heading' ).text(),
 		suggestionGroupMode: SuggestionGroupModeEnum.DEFAULT,
 		suggestionDataArray: this.suggestions
 	} )
@@ -23,6 +25,7 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	} );
 
 	this.confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
+		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-confirmed-heading' ).text(),
 		suggestionGroupMode: SuggestionGroupModeEnum.CONFIRMED,
 		suggestionDataArray: this.suggestionsConfirmed,
 		useSuggestionChosenWidgets: true
@@ -32,6 +35,7 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	} );
 
 	this.rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
+		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-rejected-heading' ).text(),
 		suggestionGroupMode: SuggestionGroupModeEnum.REJECTED,
 		suggestionDataArray: this.suggestionsRejected,
 		useSuggestionChosenWidgets: true
@@ -116,7 +120,7 @@ ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
 	return '' +
 		'IMAGE:' +
 		'\n' +
-		this.imageData.thumburl.split('/').pop() +
+		this.imageTitle +
 		'\n\n' +
 		'DEPICTS:' +
 		'\n' +
@@ -140,16 +144,7 @@ ImageWithSuggestionsWidget.prototype.onSave = function () {
 
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
-		label: this.imageData.description
-	} );
-	var suggestionsLabel = new OO.ui.LabelWidget( {
-		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-heading' ).text()
-	} );
-	var confirmedLabel = new OO.ui.LabelWidget( {
-		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-confirmed-heading' ).text()
-	} );
-	var rejectedLabel = new OO.ui.LabelWidget( {
-		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-rejected-heading' ).text()
+		label: this.imageTitle
 	} );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
@@ -184,9 +179,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
 			imageDescriptionLabel: imageDescriptionLabel,
-			suggestionsLabel: suggestionsLabel,
-			confirmedLabel: confirmedLabel,
-			rejectedLabel: rejectedLabel,
+			imageTagTitle: this.imageTitle + '\n' + this.imageData.description,
 			suggestions: this.suggestionGroupWidget,
 			suggestionsConfirmed: this.confirmedSuggestionGroupWidget,
 			suggestionsRejected: this.rejectedSuggestionGroupWidget,

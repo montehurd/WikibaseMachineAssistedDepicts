@@ -15,6 +15,10 @@ var SuggestionGroupWidget = function WikibaseMachineAssistedDepictsSuggestionGro
 		add: 'itemAdd',
 		remove: 'itemRemove'
 	} );
+	this.titleLabel = new OO.ui.LabelWidget( {
+		label: config.label,
+		classes: [ 'wbmad-suggestion-group-title-label' ]
+	} );
 	this.render();
 };
 OO.inheritClass( SuggestionGroupWidget, TemplateRenderingDOMLessGroupWidget );
@@ -41,9 +45,11 @@ SuggestionGroupWidget.prototype.getSuggestionWidgetForSuggestionData = function 
 SuggestionGroupWidget.prototype.render = function () {
 	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) );
 	this.addItems( suggestionsWidgets );
+	this.$element.css( 'display', this.suggestionDataArray.length > 0 ? 'block' : 'none' );
 	this.renderTemplate(
 		'resources/widgets/SuggestionGroupWidget.mustache+dom',
 		{
+			titleLabel: this.titleLabel,
 			suggestions: suggestionsWidgets
 		}
 	);
