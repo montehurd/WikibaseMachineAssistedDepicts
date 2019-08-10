@@ -1,5 +1,7 @@
 'use strict';
 
+var IMAGES_PER_PAGE = 25;
+
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 var ImageDepictsSuggestionsPage = require( './ImageDepictsSuggestionsPage.js' );
 var SuggestionData = require( './../models/SuggestionData.js' );
@@ -11,8 +13,8 @@ var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageD
 
 	this.buttonMore = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-more'],
-		title: mw.message( 'wikibasemachineassisteddepicts-more-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-more' ).text()
+		title: mw.message( 'wikibasemachineassisteddepicts-more-title', IMAGES_PER_PAGE ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-more', IMAGES_PER_PAGE ).text()
 	} )
 	.on('click', this.onMore, [], this );
 
@@ -103,7 +105,7 @@ ImageDepictsSuggestionsPager.prototype.showPageForQueryResponse = function( resp
 };
 
 ImageDepictsSuggestionsPager.prototype.fetchAndShowPage = function () {
-	$.getJSON( queryURLWithCountAndOffset(20, $( '.wbmad-image-depicts-suggestions-page' ).length) )
+	$.getJSON( queryURLWithCountAndOffset(IMAGES_PER_PAGE, $( '.wbmad-image-depicts-suggestions-page' ).length) )
 		.done( this.showPageForQueryResponse.bind(this) )
 		.fail( showFailureMessage );
 };
