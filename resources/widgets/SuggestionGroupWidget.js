@@ -45,7 +45,7 @@ SuggestionGroupWidget.prototype.getSuggestionWidgetForSuggestionData = function 
 SuggestionGroupWidget.prototype.render = function () {
 	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) );
 	this.addItems( suggestionsWidgets );
-	// this.$element.css( 'display', this.suggestionDataArray.length > 0 ? 'block' : 'none' );
+	this.$element.css( 'display', this.suggestionDataArray.length > 0 ? 'block' : 'none' );
 	this.renderTemplate(
 		'resources/widgets/SuggestionGroupWidget.mustache+dom',
 		{
