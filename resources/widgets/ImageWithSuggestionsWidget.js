@@ -150,24 +150,11 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} )
 	.on('click', this.onClose, [], this );
 
-	var buttonConfirmAll = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-confirm-all'],
-		title: mw.message( 'wikibasemachineassisteddepicts-confirm-all-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-confirm-all' ).text()
-	} )
-	.on('click', this.onConfirmAll, [], this );
-
-	var buttonRejectAll = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-reject-all'],
-		title: mw.message( 'wikibasemachineassisteddepicts-reject-all-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-reject-all' ).text()
-	} )
-	.on('click', this.onRejectAll, [], this );
-
 	var buttonReset = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-reset'],
 		title: mw.message( 'wikibasemachineassisteddepicts-reset-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text()
+		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text(),
+		framed: false
 	} )
 	.on('click', this.onReset, [], this );
 
@@ -187,8 +174,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			suggestions: this.suggestionGroupWidget,
 			suggestionsRejected: this.rejectedSuggestionGroupWidget,
 			thumburl: this.imageData.thumburl,
-			buttonConfirmAll: buttonConfirmAll,
-			buttonRejectAll: buttonRejectAll,
 			buttonReset: buttonReset,
 			buttonFinish: buttonFinish
 		}

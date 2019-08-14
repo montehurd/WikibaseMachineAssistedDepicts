@@ -9,7 +9,7 @@
       <div class="wbmad-image-with-suggestions-contents-right">
         {{{suggestions}}}
         {{{suggestionsRejected}}}
-        <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>
+        <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonReset}}}</div>
       </div>
     </div>
   </div>
