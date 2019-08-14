@@ -6,7 +6,7 @@ var SuggestionConfirmedWidget = require( './SuggestionConfirmedWidget.js' );
 
 var SuggestionsGroupWidget = function WikibaseMachineAssistedDepictsSuggestionsGroupWidget( config ) {
 	SuggestionsGroupWidget.parent.call( this, $.extend( {}, config ) );
-	this.$element.addClass('wbmad-suggestion-group2');
+	this.$element.addClass('wbmad-suggestion-group');
 
 	this.suggestionDataArray = config.suggestionDataArray;
 	this.suggestionDataArrayConfirmed = config.suggestionDataArrayConfirmed;
