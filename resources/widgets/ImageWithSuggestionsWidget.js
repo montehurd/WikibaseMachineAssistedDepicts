@@ -133,10 +133,22 @@ ImageWithSuggestionsWidget.prototype.onSave = function () {
 	};
 };
 
+ImageWithSuggestionsWidget.prototype.onClose = function () {
+	this.$element.slideUp();
+};
+
 ImageWithSuggestionsWidget.prototype.render = function () {
 	var imageDescriptionLabel = new OO.ui.LabelWidget( {
 		label: this.imageTitle
 	} );
+
+	var buttonClose = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-close'],
+		title: mw.message( 'wikibasemachineassisteddepicts-close-title', this.imageTitle ).text(),
+		icon: 'close',
+		framed: false
+	} )
+	.on('click', this.onClose, [], this );
 
 	var buttonConfirmAll = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-confirm-all'],
@@ -169,6 +181,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
+			buttonClose: buttonClose,
 			imageDescriptionLabel: imageDescriptionLabel,
 			imageTagTitle: this.imageTitle + '\n' + this.imageData.description,
 			suggestions: this.suggestionGroupWidget,

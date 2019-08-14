@@ -19,6 +19,7 @@
 	"wikibasemachineassisteddepicts-reject-all-title": "Title for button to reject all suggestions for an image",
 	"wikibasemachineassisteddepicts-reset": "Text for button to reset all suggestions for an image",
 	"wikibasemachineassisteddepicts-reset-title": "Title for button to reset all suggestions for an image",
+	"wikibasemachineassisteddepicts-close-title": "Title for button to close suggestions for an image. Parameters:\n* $1 - File name of image to close",
 	"wikibasemachineassisteddepicts-suggestion-confirm-title": "Title for button to confirm individual suggestion for an image. Parameters:\n* $1 - Text of suggestion to confirm",
 	"wikibasemachineassisteddepicts-suggestion-confirm-undo-title": "Title for button to undo individual suggestion confirmation for an image. Parameters:\n* $1 - Text of suggestion confirmation to undo",
 	"wikibasemachineassisteddepicts-suggestion-reject-title": "Title for button to reject individual suggestion for an image. Parameters:\n* $1 - Text of suggestion to reject",
