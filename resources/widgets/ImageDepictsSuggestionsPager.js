@@ -10,7 +10,9 @@ var ImageData = require( './../models/ImageData.js' );
 var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPager( config ) {
 	ImageDepictsSuggestionsPager.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-image-depicts-suggestions-pager');
-
+	this.descriptionLabel = new OO.ui.LabelWidget( {
+		label: mw.message( 'wikibasemachineassisteddepicts-desc' ).text()
+	} );
 	this.buttonMore = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-more'],
 		title: mw.message( 'wikibasemachineassisteddepicts-more-title', IMAGES_PER_PAGE ).text(),
@@ -32,6 +34,7 @@ ImageDepictsSuggestionsPager.prototype.render = function () {
 	this.renderTemplate(
 		'resources/widgets/ImageDepictsSuggestionsPager.mustache+dom',
 		{
+			descriptionLabel: this.descriptionLabel,
 			buttonMore: this.buttonMore
 		}
 	);

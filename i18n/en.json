@@ -4,8 +4,8 @@
 			"Monte Hurd"
 		]
 	},
-	"wikibasemachineassisteddepicts": "Machine Assisted Depicts",
-	"wikibasemachineassisteddepicts-desc": "Adds the WikibaseMachineAssistedDepicts functionality.",
+	"wikibasemachineassisteddepicts": "Machine-aided tagging",
+	"wikibasemachineassisteddepicts-desc": "Review image depiction tag suggestions from a computer vision model. Only tags confirmed by users will get added to images.",
 	"wikibasemachineassisteddepicts-summary": "Improve structured data on Commons by reviewing image depiction suggestions",
 	"wikibasemachineassisteddepicts-suggestions-heading": "Suggested tags",
 	"wikibasemachineassisteddepicts-suggestions-rejected-heading": "Rejected tags",

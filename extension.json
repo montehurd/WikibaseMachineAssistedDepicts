@@ -80,6 +80,7 @@
 				"resources/widgets/SuggestionRejectedWidget.mustache+dom"
 			],
 			"messages": [
+				"wikibasemachineassisteddepicts-desc",
 				"wikibasemachineassisteddepicts-summary",
 				"wikibasemachineassisteddepicts-suggestions-heading",
 				"wikibasemachineassisteddepicts-suggestions-rejected-heading",
