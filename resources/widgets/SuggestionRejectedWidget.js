@@ -19,7 +19,10 @@ SuggestionRejectedWidget.prototype.render = function () {
 		icon: 'close',
 		framed: false
 	})
-	.on( 'click', this.emitDestructive, null, this);
+
+	this.$element.on( {
+		click: this.emitUnrejectSuggestion.bind( this )
+	} );
 
 	this.renderTemplate(
 		'resources/widgets/SuggestionRejectedWidget.mustache+dom',

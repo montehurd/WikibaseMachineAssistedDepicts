@@ -9,12 +9,17 @@ var	SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBase
 };
 OO.inheritClass( SuggestionBaseWidget, TemplateRenderingDOMLessGroupWidget );
 
-SuggestionBaseWidget.prototype.emitProgressive = function () {
-	this.emit( 'add' );
+SuggestionBaseWidget.prototype.emitConfirmSuggestion = function () {
+	this.emit( 'confirmSuggestion' );
 };
-
-SuggestionBaseWidget.prototype.emitDestructive = function () {
-	this.emit( 'remove' );
+SuggestionBaseWidget.prototype.emitUnconfirmSuggestion = function () {
+	this.emit( 'unconfirmSuggestion' );
+};
+SuggestionBaseWidget.prototype.emitRejectSuggestion = function () {
+	this.emit( 'rejectSuggestion' );
+};
+SuggestionBaseWidget.prototype.emitUnrejectSuggestion = function () {
+	this.emit( 'unrejectSuggestion' );
 };
 
 module.exports = SuggestionBaseWidget;

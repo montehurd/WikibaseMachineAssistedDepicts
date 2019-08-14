@@ -8,7 +8,6 @@
 	"wikibasemachineassisteddepicts-desc": "{{desc}}",
 	"wikibasemachineassisteddepicts-summary": "Description appearing on top of Special:WikibaseMachineAssistedDepicts.",
 	"wikibasemachineassisteddepicts-suggestions-heading": "Label for the 'Suggestions' section",
-	"wikibasemachineassisteddepicts-suggestions-confirmed-heading": "Label for the 'Confirmed' section",
 	"wikibasemachineassisteddepicts-suggestions-rejected-heading": "Label for the 'Rejected' section",
 	"wikibasemachineassisteddepicts-save": "Text for button to save confirmed suggestions",
 	"wikibasemachineassisteddepicts-save-title": "Title for button to save confirmed suggestions",

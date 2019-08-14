@@ -6,7 +6,6 @@
     </div>
     <div class="wbmad-image-with-suggestions-container-wrap">
       <div class="wbmad-image-with-suggestions-contents-right">
-        {{{suggestionsConfirmed}}}
         {{{suggestions}}}
         {{{suggestionsRejected}}}
         <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonConfirmAll}}}{{{buttonRejectAll}}}{{{buttonReset}}}</div>

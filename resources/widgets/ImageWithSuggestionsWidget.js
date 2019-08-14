@@ -1,8 +1,8 @@
 'use strict';
 
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
-var SuggestionGroupWidget = require( './SuggestionGroupWidget.js' );
-var SuggestionGroupModeEnum = require( './../models/SuggestionGroupModeEnum.js' );
+var SuggestionsRejectedGroupWidget = require( './SuggestionsRejectedGroupWidget.js' );
+var SuggestionsGroupWidget = require( './SuggestionsGroupWidget.js' );
 
 var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWithSuggestionsWidget( config ) {
 	ImageWithSuggestionsWidget.parent.call( this, $.extend( {}, config ) );
@@ -14,34 +14,25 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.suggestionsRejected = [];
 	this.imageTitle = this.imageData.title.split(':').pop();
 
-	this.suggestionGroupWidget = new SuggestionGroupWidget({
+	this.suggestionGroupWidget = new SuggestionsGroupWidget({
 		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-heading' ).text(),
-		suggestionGroupMode: SuggestionGroupModeEnum.DEFAULT,
-		suggestionDataArray: this.suggestions
+		suggestionDataArray: this.suggestionsOriginal,
+		suggestionDataArrayConfirmed: this.suggestionsConfirmed,
+		suggestionDataArrayRejected: this.suggestionsRejected
 	} )
 	.connect( this, {
-		itemAdd: 'onConfirmSuggestion',
-		itemRemove: 'onRejectSuggestion'
+		confirmSuggestion: 'onConfirmSuggestion',
+		unconfirmSuggestion: 'onUnconfirmSuggestion',
+		rejectSuggestion: 'onRejectSuggestion'
 	} );
 
-	this.confirmedSuggestionGroupWidget = new SuggestionGroupWidget({
-		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-confirmed-heading' ).text(),
-		suggestionGroupMode: SuggestionGroupModeEnum.CONFIRMED,
-		suggestionDataArray: this.suggestionsConfirmed,
-		useSuggestionChosenWidgets: true
-	})
-	.connect( this, {
-		itemRemove: 'onRejectConfirmedSuggestion'
-	} );
-
-	this.rejectedSuggestionGroupWidget = new SuggestionGroupWidget({
+	this.rejectedSuggestionGroupWidget = new SuggestionsRejectedGroupWidget({
 		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-rejected-heading' ).text(),
-		suggestionGroupMode: SuggestionGroupModeEnum.REJECTED,
 		suggestionDataArray: this.suggestionsRejected,
 		useSuggestionChosenWidgets: true
 	})
 	.connect( this, {
-		itemRemove: 'onRejectedRejectedSuggestion'
+		unrejectSuggestion: 'onUnrejectSuggestion'
 	} );
 
 	this.render();
@@ -67,11 +58,11 @@ var moveItemBetweenArrays = function (item, fromArray, toArray) {
 };
 
 ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
-	this.suggestionGroupWidget.suggestionDataArray = this.suggestions;
-	this.confirmedSuggestionGroupWidget.suggestionDataArray = this.suggestionsConfirmed;
+	this.suggestionGroupWidget.suggestionDataArray = this.suggestionsOriginal;
+	this.suggestionGroupWidget.suggestionDataArrayConfirmed = this.suggestionsConfirmed;
+	this.suggestionGroupWidget.suggestionDataArrayRejected = this.suggestionsRejected;
 	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.suggestionsRejected;
 	this.suggestionGroupWidget.render();
-	this.confirmedSuggestionGroupWidget.render();
 	this.rejectedSuggestionGroupWidget.render();
 }
 
@@ -85,12 +76,12 @@ ImageWithSuggestionsWidget.prototype.onRejectSuggestion = function (suggestionWi
 	this.rerenderGroups();
 };
 
-ImageWithSuggestionsWidget.prototype.onRejectConfirmedSuggestion = function (suggestionWidget) {
+ImageWithSuggestionsWidget.prototype.onUnconfirmSuggestion = function (suggestionWidget) {
 	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
 	this.rerenderGroups();
 };
 
-ImageWithSuggestionsWidget.prototype.onRejectedRejectedSuggestion = function (suggestionWidget) {
+ImageWithSuggestionsWidget.prototype.onUnrejectSuggestion = function (suggestionWidget) {
 	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
 	this.rerenderGroups();
 };
@@ -181,7 +172,6 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			imageDescriptionLabel: imageDescriptionLabel,
 			imageTagTitle: this.imageTitle + '\n' + this.imageData.description,
 			suggestions: this.suggestionGroupWidget,
-			suggestionsConfirmed: this.confirmedSuggestionGroupWidget,
 			suggestionsRejected: this.rejectedSuggestionGroupWidget,
 			thumburl: this.imageData.thumburl,
 			buttonConfirmAll: buttonConfirmAll,

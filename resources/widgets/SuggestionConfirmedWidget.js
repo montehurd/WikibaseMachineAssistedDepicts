@@ -16,10 +16,13 @@ SuggestionConfirmedWidget.prototype.render = function () {
 
 	var subtractButton = new OO.ui.ButtonWidget( {
 		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-confirm-undo-title', this.suggestionData.text ).text(),
-		icon: 'close',
+		icon: 'check',
 		framed: false
-	})
-	.on( 'click', this.emitDestructive, null, this );
+	} );
+
+	this.$element.on( {
+		click: this.emitUnconfirmSuggestion.bind( this )
+	} );
 
 	this.renderTemplate(
 		'resources/widgets/SuggestionConfirmedWidget.mustache+dom',
