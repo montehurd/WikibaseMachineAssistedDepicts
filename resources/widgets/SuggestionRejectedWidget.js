@@ -14,6 +14,12 @@ SuggestionRejectedWidget.prototype.render = function () {
 		label: this.suggestionData.text
 	} );
 
+	var subtractButton = new OO.ui.ButtonWidget( {
+		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-reject-undo-title', this.suggestionData.text ).text(),
+		icon: 'close',
+		framed: false
+	})
+
 	this.$element.on( {
 		click: this.emitUnrejectSuggestion.bind( this )
 	} );
@@ -21,7 +27,8 @@ SuggestionRejectedWidget.prototype.render = function () {
 	this.renderTemplate(
 		'resources/widgets/SuggestionRejectedWidget.mustache+dom',
 		{
-			suggestionLabel: suggestionLabel
+			suggestionLabel: suggestionLabel,
+			subtractButton: subtractButton
 		}
 	);
 };
