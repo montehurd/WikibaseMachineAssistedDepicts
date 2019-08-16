@@ -64,6 +64,9 @@ ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
 	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.suggestionsRejected;
 	this.suggestionGroupWidget.render();
 	this.rejectedSuggestionGroupWidget.render();
+	var isAnythingSelected = ( this.suggestionsConfirmed.length > 0 || this.suggestionsRejected.length > 0 );
+	this.buttonFinish.setDisabled( !isAnythingSelected );
+	this.buttonReset.setDisabled( !isAnythingSelected );
 }
 
 ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionWidget) {
@@ -150,18 +153,24 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} )
 	.on('click', this.onClose, [], this );
 
-	var buttonReset = new OO.ui.ButtonWidget( {
+	this.buttonReset = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-reset'],
 		title: mw.message( 'wikibasemachineassisteddepicts-reset-title' ).text(),
 		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text(),
-		framed: false
+		framed: false,
+		disabled: true
 	} )
 	.on('click', this.onReset, [], this );
 
-	var buttonFinish = new OO.ui.ButtonWidget( {
+	this.buttonFinish = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-save'],
 		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text()
+		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text(),
+		disabled: true,
+		flags: [
+			'primary',
+			'progressive'
+		]
 	} )
 	.on('click', this.onSave, [], this );
 
@@ -174,8 +183,8 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			suggestions: this.suggestionGroupWidget,
 			suggestionsRejected: this.rejectedSuggestionGroupWidget,
 			thumburl: this.imageData.thumburl,
-			buttonReset: buttonReset,
-			buttonFinish: buttonFinish
+			buttonReset: this.buttonReset,
+			buttonFinish: this.buttonFinish
 		}
 	);
 };
