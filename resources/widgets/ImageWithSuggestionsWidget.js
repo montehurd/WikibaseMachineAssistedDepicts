@@ -58,15 +58,15 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 
 	this.publishButton = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-publish-button'],
-		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text(),
+		title: mw.message( 'wikibasemachineassisteddepicts-publish-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-publish' ).text(),
 		disabled: true,
 		flags: [
 			'primary',
 			'progressive'
 		]
 	} )
-	.on('click', this.onSave, [], this );
+	.on('click', this.onPublish, [], this );
 
 	this.render();
 };
@@ -145,7 +145,7 @@ ImageWithSuggestionsWidget.prototype.onReset = function () {
 	this.rerenderGroups();
 };
 
-ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
+ImageWithSuggestionsWidget.prototype.getPublishDebugString = function () {
 	return '' +
 		'IMAGE:' +
 		'\n' +
@@ -164,9 +164,9 @@ ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
 		}).join(', ');
 };
 
-ImageWithSuggestionsWidget.prototype.onSave = function () {
+ImageWithSuggestionsWidget.prototype.onPublish = function () {
 	// TODO: wire up to middleware 'save' endpoint once it exists
-	if ( confirm( this.getSaveDebugString() ) ) {
+	if ( confirm( this.getPublishDebugString() ) ) {
 		this.$element.slideUp();
 	};
 };
