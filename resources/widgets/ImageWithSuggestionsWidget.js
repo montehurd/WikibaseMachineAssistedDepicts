@@ -11,14 +11,14 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.suggestions = this.imageData.suggestions;
 	this.suggestionsOriginal = deepArrayCopy( this.suggestions );
 	this.suggestionsConfirmed = [];
-	this.suggestionsRejected = [];
+	this.rejectedSuggestions = [];
 	this.imageTitle = this.imageData.title.split(':').pop();
 
 	this.suggestionGroupWidget = new SuggestionsGroupWidget({
 		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-heading' ).text(),
 		suggestionDataArray: this.suggestionsOriginal,
 		suggestionDataArrayConfirmed: this.suggestionsConfirmed,
-		suggestionDataArrayRejected: this.suggestionsRejected
+		suggestionDataArrayRejected: this.rejectedSuggestions
 	} )
 	.connect( this, {
 		confirmSuggestion: 'onConfirmSuggestion',
@@ -28,7 +28,7 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 
 	this.rejectedSuggestionGroupWidget = new SuggestionsRejectedGroupWidget({
 		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-rejected-heading' ).text(),
-		suggestionDataArray: this.suggestionsRejected,
+		suggestionDataArray: this.rejectedSuggestions,
 		useSuggestionChosenWidgets: true
 	})
 	.connect( this, {
@@ -60,13 +60,13 @@ var moveItemBetweenArrays = function (item, fromArray, toArray) {
 ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
 	this.suggestionGroupWidget.suggestionDataArray = this.suggestionsOriginal;
 	this.suggestionGroupWidget.suggestionDataArrayConfirmed = this.suggestionsConfirmed;
-	this.suggestionGroupWidget.suggestionDataArrayRejected = this.suggestionsRejected;
-	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.suggestionsRejected;
+	this.suggestionGroupWidget.suggestionDataArrayRejected = this.rejectedSuggestions;
+	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.rejectedSuggestions;
 	this.suggestionGroupWidget.render();
 	this.rejectedSuggestionGroupWidget.render();
-	var isAnythingSelected = ( this.suggestionsConfirmed.length > 0 || this.suggestionsRejected.length > 0 );
-	this.buttonFinish.setDisabled( !isAnythingSelected );
-	this.buttonReset.setDisabled( !isAnythingSelected );
+	var isAnythingSelected = ( this.suggestionsConfirmed.length > 0 || this.rejectedSuggestions.length > 0 );
+	this.finishButton.setDisabled( !isAnythingSelected );
+	this.resetButton.setDisabled( !isAnythingSelected );
 }
 
 ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionWidget) {
@@ -75,7 +75,7 @@ ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionW
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectSuggestion = function (suggestionWidget) {
-	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsRejected);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.rejectedSuggestions);
 	this.rerenderGroups();
 };
 
@@ -85,28 +85,28 @@ ImageWithSuggestionsWidget.prototype.onUnconfirmSuggestion = function (suggestio
 };
 
 ImageWithSuggestionsWidget.prototype.onUnrejectSuggestion = function (suggestionWidget) {
-	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsRejected, this.suggestions);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.rejectedSuggestions, this.suggestions);
 	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onConfirmAll = function () {
 	this.suggestions = [];
 	this.suggestionsConfirmed = this.getOriginalSuggestions();
-	this.suggestionsRejected = [];
+	this.rejectedSuggestions = [];
 	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectAll = function () {
 	this.suggestions = [];
 	this.suggestionsConfirmed = [];
-	this.suggestionsRejected = this.getOriginalSuggestions();
+	this.rejectedSuggestions = this.getOriginalSuggestions();
 	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onReset = function () {
 	this.suggestions = this.getOriginalSuggestions();
 	this.suggestionsConfirmed = [];
-	this.suggestionsRejected = [];
+	this.rejectedSuggestions = [];
 	this.rerenderGroups();
 };
 
@@ -124,7 +124,7 @@ ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
 		'\n\n' +
 		'DOESN\'T DEPICT:' +
 		'\n' +
-		$.map( this.suggestionsRejected, function( suggestion ) {
+		$.map( this.rejectedSuggestions, function( suggestion ) {
 			return suggestion.text;
 		}).join(', ');
 };
@@ -145,7 +145,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 		label: this.imageTitle
 	} );
 
-	var buttonClose = new OO.ui.ButtonWidget( {
+	var closeButton = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-close'],
 		title: mw.message( 'wikibasemachineassisteddepicts-close-title', this.imageTitle ).text(),
 		icon: 'close',
@@ -153,7 +153,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} )
 	.on('click', this.onClose, [], this );
 
-	this.buttonReset = new OO.ui.ButtonWidget( {
+	this.resetButton = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-reset'],
 		title: mw.message( 'wikibasemachineassisteddepicts-reset-title' ).text(),
 		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text(),
@@ -162,7 +162,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} )
 	.on('click', this.onReset, [], this );
 
-	this.buttonFinish = new OO.ui.ButtonWidget( {
+	this.finishButton = new OO.ui.ButtonWidget( {
 		classes: ['wbmad-button-save'],
 		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
 		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text(),
@@ -177,14 +177,14 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
-			buttonClose: buttonClose,
+			closeButton: closeButton,
 			imageDescriptionLabel: imageDescriptionLabel,
 			imageTagTitle: this.imageTitle + '\n' + this.imageData.description,
 			suggestions: this.suggestionGroupWidget,
-			suggestionsRejected: this.rejectedSuggestionGroupWidget,
+			rejectedSuggestions: this.rejectedSuggestionGroupWidget,
 			thumburl: this.imageData.thumburl,
-			buttonReset: this.buttonReset,
-			buttonFinish: this.buttonFinish
+			resetButton: this.resetButton,
+			finishButton: this.finishButton
 		}
 	);
 };

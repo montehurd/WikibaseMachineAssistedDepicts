@@ -1,4 +1,4 @@
-{{{buttonClose}}}
+{{{closeButton}}}
 <div class="wbmad-image-with-suggestions-flex-container">
   <div class="wbmad-image-with-suggestions-flex-left">
     {{{imageDescriptionLabel}}}
@@ -6,7 +6,7 @@
   </div>
   <div class="wbmad-image-with-suggestions-flex-right">
     {{{suggestions}}}
-    {{{suggestionsRejected}}}
-    <div class="wbmad-buttons">{{{buttonFinish}}}{{{buttonReset}}}</div>
+    {{{rejectedSuggestions}}}
+    <div class="wbmad-buttons">{{{finishButton}}}{{{resetButton}}}</div>
   </div>
 </div>
