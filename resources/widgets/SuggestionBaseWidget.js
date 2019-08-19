@@ -3,7 +3,7 @@
 var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
 
 var	SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBaseWidget( config ) {
-	config.classes = ['wbmad-suggestion-base'];
+	config.classes = ['wbmad-base-suggestion'];
 	SuggestionBaseWidget.parent.call( this, $.extend( {}, config ) );
 	this.suggestionData = config.suggestionData;
 };
