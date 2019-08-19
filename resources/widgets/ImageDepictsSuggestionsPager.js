@@ -13,8 +13,8 @@ var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageD
 	this.descriptionLabel = new OO.ui.LabelWidget( {
 		label: mw.message( 'wikibasemachineassisteddepicts-desc' ).text()
 	} );
-	this.buttonMore = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-more'],
+	this.moreButton = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-more-button'],
 		title: mw.message( 'wikibasemachineassisteddepicts-more-title', IMAGES_PER_PAGE ).text(),
 		label: mw.message( 'wikibasemachineassisteddepicts-more', IMAGES_PER_PAGE ).text()
 	} )
@@ -35,7 +35,7 @@ ImageDepictsSuggestionsPager.prototype.render = function () {
 		'resources/widgets/ImageDepictsSuggestionsPager.mustache+dom',
 		{
 			descriptionLabel: this.descriptionLabel,
-			buttonMore: this.buttonMore
+			moreButton: this.moreButton
 		}
 	);
 };
@@ -94,7 +94,7 @@ var getImageDataForQueryResponsePage = function( page ) {
 };
 
 var updateMoreButtonVisibility = function ( resultsFound ) {
-	$( '.wbmad-button-more' ).css( 'display', resultsFound ? 'block' : 'none' );
+	$( '.wbmad-more-button' ).css( 'display', resultsFound ? 'block' : 'none' );
 }
 
 ImageDepictsSuggestionsPager.prototype.showPageForQueryResponse = function( response ) {
