@@ -9,16 +9,16 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	this.$element.addClass('wbmad-image-with-suggestions');
 	this.imageData = config.imageData;
 	this.suggestions = this.imageData.suggestions;
-	this.suggestionsOriginal = deepArrayCopy( this.suggestions );
-	this.suggestionsConfirmed = [];
+	this.originalSuggestions = deepArrayCopy( this.suggestions );
+	this.confirmedSuggestions = [];
 	this.rejectedSuggestions = [];
 	this.imageTitle = this.imageData.title.split(':').pop();
 
 	this.suggestionGroupWidget = new SuggestionsGroupWidget({
 		label: mw.message( 'wikibasemachineassisteddepicts-suggestions-heading' ).text(),
-		suggestionDataArray: this.suggestionsOriginal,
-		suggestionDataArrayConfirmed: this.suggestionsConfirmed,
-		suggestionDataArrayRejected: this.rejectedSuggestions
+		suggestionDataArray: this.originalSuggestions,
+		confirmedSuggestionDataArray: this.confirmedSuggestions,
+		rejectedSuggestionDataArray: this.rejectedSuggestions
 	} )
 	.connect( this, {
 		confirmSuggestion: 'onConfirmSuggestion',
@@ -44,7 +44,7 @@ var deepArrayCopy = function (array) {
 };
 
 ImageWithSuggestionsWidget.prototype.getOriginalSuggestions = function () {
-	return deepArrayCopy( this.suggestionsOriginal );
+	return deepArrayCopy( this.originalSuggestions );
 };
 
 var moveItemBetweenArrays = function (item, fromArray, toArray) {
@@ -58,19 +58,19 @@ var moveItemBetweenArrays = function (item, fromArray, toArray) {
 };
 
 ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
-	this.suggestionGroupWidget.suggestionDataArray = this.suggestionsOriginal;
-	this.suggestionGroupWidget.suggestionDataArrayConfirmed = this.suggestionsConfirmed;
-	this.suggestionGroupWidget.suggestionDataArrayRejected = this.rejectedSuggestions;
+	this.suggestionGroupWidget.suggestionDataArray = this.originalSuggestions;
+	this.suggestionGroupWidget.confirmedSuggestionDataArray = this.confirmedSuggestions;
+	this.suggestionGroupWidget.rejectedSuggestionDataArray = this.rejectedSuggestions;
 	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.rejectedSuggestions;
 	this.suggestionGroupWidget.render();
 	this.rejectedSuggestionGroupWidget.render();
-	var isAnythingSelected = ( this.suggestionsConfirmed.length > 0 || this.rejectedSuggestions.length > 0 );
+	var isAnythingSelected = ( this.confirmedSuggestions.length > 0 || this.rejectedSuggestions.length > 0 );
 	this.finishButton.setDisabled( !isAnythingSelected );
 	this.resetButton.setDisabled( !isAnythingSelected );
 }
 
 ImageWithSuggestionsWidget.prototype.onConfirmSuggestion = function (suggestionWidget) {
-	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.suggestionsConfirmed);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestions, this.confirmedSuggestions);
 	this.rerenderGroups();
 };
 
@@ -80,7 +80,7 @@ ImageWithSuggestionsWidget.prototype.onRejectSuggestion = function (suggestionWi
 };
 
 ImageWithSuggestionsWidget.prototype.onUnconfirmSuggestion = function (suggestionWidget) {
-	moveItemBetweenArrays(suggestionWidget.suggestionData, this.suggestionsConfirmed, this.suggestions);
+	moveItemBetweenArrays(suggestionWidget.suggestionData, this.confirmedSuggestions, this.suggestions);
 	this.rerenderGroups();
 };
 
@@ -91,21 +91,21 @@ ImageWithSuggestionsWidget.prototype.onUnrejectSuggestion = function (suggestion
 
 ImageWithSuggestionsWidget.prototype.onConfirmAll = function () {
 	this.suggestions = [];
-	this.suggestionsConfirmed = this.getOriginalSuggestions();
+	this.confirmedSuggestions = this.getOriginalSuggestions();
 	this.rejectedSuggestions = [];
 	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onRejectAll = function () {
 	this.suggestions = [];
-	this.suggestionsConfirmed = [];
+	this.confirmedSuggestions = [];
 	this.rejectedSuggestions = this.getOriginalSuggestions();
 	this.rerenderGroups();
 };
 
 ImageWithSuggestionsWidget.prototype.onReset = function () {
 	this.suggestions = this.getOriginalSuggestions();
-	this.suggestionsConfirmed = [];
+	this.confirmedSuggestions = [];
 	this.rejectedSuggestions = [];
 	this.rerenderGroups();
 };
@@ -118,7 +118,7 @@ ImageWithSuggestionsWidget.prototype.getSaveDebugString = function () {
 		'\n\n' +
 		'DEPICTS:' +
 		'\n' +
-		$.map( this.suggestionsConfirmed, function( suggestion ) {
+		$.map( this.confirmedSuggestions, function( suggestion ) {
 			return suggestion.text;
 		}).join(', ') +
 		'\n\n' +

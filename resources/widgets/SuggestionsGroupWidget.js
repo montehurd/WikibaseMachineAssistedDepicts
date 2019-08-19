@@ -9,8 +9,8 @@ var SuggestionsGroupWidget = function WikibaseMachineAssistedDepictsSuggestionsG
 	this.$element.addClass('wbmad-suggestion-group');
 
 	this.suggestionDataArray = config.suggestionDataArray;
-	this.suggestionDataArrayConfirmed = config.suggestionDataArrayConfirmed;
-	this.suggestionDataArrayRejected = config.suggestionDataArrayRejected;
+	this.confirmedSuggestionDataArray = config.confirmedSuggestionDataArray;
+	this.rejectedSuggestionDataArray = config.rejectedSuggestionDataArray;
 
 	this.aggregate( {
 		confirmSuggestion: 'confirmSuggestion',
@@ -26,12 +26,12 @@ var SuggestionsGroupWidget = function WikibaseMachineAssistedDepictsSuggestionsG
 OO.inheritClass( SuggestionsGroupWidget, TemplateRenderingDOMLessGroupWidget );
 
 SuggestionsGroupWidget.prototype.getSuggestionWidgetForSuggestionData = function (suggestionData) {
-	if ( $.inArray( suggestionData, this.suggestionDataArrayConfirmed ) > -1 ) {
+	if ( $.inArray( suggestionData, this.confirmedSuggestionDataArray ) > -1 ) {
 		return new SuggestionConfirmedWidget( {
 			suggestionData: suggestionData
 		} );
 	}
-	if ( $.inArray( suggestionData, this.suggestionDataArrayRejected ) > -1 ) {
+	if ( $.inArray( suggestionData, this.rejectedSuggestionDataArray ) > -1 ) {
 		return null;
 	}
 	return new SuggestionWidget( {
