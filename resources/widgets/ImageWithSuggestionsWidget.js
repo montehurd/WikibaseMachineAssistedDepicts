@@ -56,8 +56,8 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 	} )
 	.on('click', this.onReset, [], this );
 
-	this.finishButton = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-save'],
+	this.publishButton = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-publish-button'],
 		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
 		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text(),
 		disabled: true,
@@ -100,7 +100,7 @@ ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
 	this.rejectedSuggestionGroupWidget.render();
 
 	var isAnythingSelected = ( this.confirmedSuggestions.length > 0 || this.rejectedSuggestions.length > 0 );
-	this.finishButton.setDisabled( !isAnythingSelected );
+	this.publishButton.setDisabled( !isAnythingSelected );
 	this.resetButton.setDisabled( !isAnythingSelected );
 }
 
@@ -186,7 +186,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 			rejectedSuggestions: this.rejectedSuggestionGroupWidget,
 			thumburl: this.imageData.thumburl,
 			resetButton: this.resetButton,
-			finishButton: this.finishButton
+			publishButton: this.publishButton
 		}
 	);
 };
