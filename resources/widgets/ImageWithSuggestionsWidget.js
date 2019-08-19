@@ -35,6 +35,39 @@ var	ImageWithSuggestionsWidget = function WikibaseMachineAssistedDepictsImageWit
 		unrejectSuggestion: 'onUnrejectSuggestion'
 	} );
 
+	this.imageDescriptionLabel = new OO.ui.LabelWidget( {
+		label: this.imageTitle
+	} );
+
+	this.closeButton = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-close-button'],
+		title: mw.message( 'wikibasemachineassisteddepicts-close-title', this.imageTitle ).text(),
+		icon: 'close',
+		framed: false
+	} )
+	.on('click', this.onClose, [], this );
+
+	this.resetButton = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-reset'],
+		title: mw.message( 'wikibasemachineassisteddepicts-reset-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text(),
+		framed: false,
+		disabled: true
+	} )
+	.on('click', this.onReset, [], this );
+
+	this.finishButton = new OO.ui.ButtonWidget( {
+		classes: ['wbmad-button-save'],
+		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
+		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text(),
+		disabled: true,
+		flags: [
+			'primary',
+			'progressive'
+		]
+	} )
+	.on('click', this.onSave, [], this );
+
 	this.render();
 };
 OO.inheritClass( ImageWithSuggestionsWidget, TemplateRenderingDOMLessGroupWidget );
@@ -141,44 +174,11 @@ ImageWithSuggestionsWidget.prototype.onClose = function () {
 };
 
 ImageWithSuggestionsWidget.prototype.render = function () {
-	var imageDescriptionLabel = new OO.ui.LabelWidget( {
-		label: this.imageTitle
-	} );
-
-	var closeButton = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-close-button'],
-		title: mw.message( 'wikibasemachineassisteddepicts-close-title', this.imageTitle ).text(),
-		icon: 'close',
-		framed: false
-	} )
-	.on('click', this.onClose, [], this );
-
-	this.resetButton = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-reset'],
-		title: mw.message( 'wikibasemachineassisteddepicts-reset-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-reset' ).text(),
-		framed: false,
-		disabled: true
-	} )
-	.on('click', this.onReset, [], this );
-
-	this.finishButton = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-save'],
-		title: mw.message( 'wikibasemachineassisteddepicts-save-title' ).text(),
-		label: mw.message( 'wikibasemachineassisteddepicts-save' ).text(),
-		disabled: true,
-		flags: [
-			'primary',
-			'progressive'
-		]
-	} )
-	.on('click', this.onSave, [], this );
-
 	this.renderTemplate(
 		'resources/widgets/ImageWithSuggestionsWidget.mustache+dom',
 		{
-			closeButton: closeButton,
-			imageDescriptionLabel: imageDescriptionLabel,
+			closeButton: this.closeButton,
+			imageDescriptionLabel: this.imageDescriptionLabel,
 			imageTagTitle: this.imageTitle + '\n' + this.imageData.description,
 			suggestions: this.suggestionGroupWidget,
 			rejectedSuggestions: this.rejectedSuggestionGroupWidget,
