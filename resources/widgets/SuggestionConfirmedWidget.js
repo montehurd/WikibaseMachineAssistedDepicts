@@ -4,7 +4,7 @@ var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
 
 var	SuggestionConfirmedWidget = function WikibaseMachineAssistedDepictsSuggestionConfirmedWidget( config ) {
 	SuggestionConfirmedWidget.parent.call( this, $.extend( {}, config ) );
-	this.$element.addClass('wbmad-suggestion-confirmed');
+	this.$element.addClass('wbmad-confirmed-suggestion');
 	this.render();
 };
 OO.inheritClass( SuggestionConfirmedWidget, SuggestionBaseWidget );

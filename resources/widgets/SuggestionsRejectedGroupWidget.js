@@ -5,7 +5,7 @@ var SuggestionRejectedWidget = require( './SuggestionRejectedWidget.js' );
 
 var SuggestionsRejectedGroupWidget = function WikibaseMachineAssistedDepictsSuggestionsRejectedGroupWidget( config ) {
 	SuggestionsRejectedGroupWidget.parent.call( this, $.extend( {}, config ) );
-	this.$element.addClass('wbmad-suggestion-rejected-group');
+	this.$element.addClass('wbmad-rejected-suggestion-group');
 	this.suggestionDataArray = config.suggestionDataArray;
 	this.aggregate( {
 		unrejectSuggestion: 'unrejectSuggestion'

@@ -4,7 +4,7 @@ var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
 
 var	SuggestionRejectedWidget = function WikibaseMachineAssistedDepictsSuggestionRejectedWidget( config ) {
 	SuggestionRejectedWidget.parent.call( this, $.extend( {}, config ) );
-	this.$element.addClass('wbmad-suggestion-rejected');
+	this.$element.addClass('wbmad-rejected-suggestion');
 	this.render();
 };
 OO.inheritClass( SuggestionRejectedWidget, SuggestionBaseWidget );
