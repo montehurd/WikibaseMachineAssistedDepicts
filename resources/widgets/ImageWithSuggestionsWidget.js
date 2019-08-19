@@ -94,9 +94,11 @@ ImageWithSuggestionsWidget.prototype.rerenderGroups = function () {
 	this.suggestionGroupWidget.suggestionDataArray = this.originalSuggestions;
 	this.suggestionGroupWidget.confirmedSuggestionDataArray = this.confirmedSuggestions;
 	this.suggestionGroupWidget.rejectedSuggestionDataArray = this.rejectedSuggestions;
-	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.rejectedSuggestions;
 	this.suggestionGroupWidget.render();
+
+	this.rejectedSuggestionGroupWidget.suggestionDataArray = this.rejectedSuggestions;
 	this.rejectedSuggestionGroupWidget.render();
+
 	var isAnythingSelected = ( this.confirmedSuggestions.length > 0 || this.rejectedSuggestions.length > 0 );
 	this.finishButton.setDisabled( !isAnythingSelected );
 	this.resetButton.setDisabled( !isAnythingSelected );
