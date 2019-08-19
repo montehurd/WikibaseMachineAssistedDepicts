@@ -146,7 +146,7 @@ ImageWithSuggestionsWidget.prototype.render = function () {
 	} );
 
 	var closeButton = new OO.ui.ButtonWidget( {
-		classes: ['wbmad-button-close'],
+		classes: ['wbmad-close-button'],
 		title: mw.message( 'wikibasemachineassisteddepicts-close-title', this.imageTitle ).text(),
 		icon: 'close',
 		framed: false
