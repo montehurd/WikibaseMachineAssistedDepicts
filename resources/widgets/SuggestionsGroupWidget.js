@@ -40,13 +40,13 @@ SuggestionsGroupWidget.prototype.getSuggestionWidgetForSuggestionData = function
 };
 
 SuggestionsGroupWidget.prototype.render = function () {
-	var suggestionsWidgets = $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) );
-	this.addItems( suggestionsWidgets );
+	this.clearItems();
+	this.addItems( $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) ) );
 	this.renderTemplate(
 		'resources/widgets/SuggestionsGroupWidget.mustache+dom',
 		{
 			titleLabel: this.titleLabel,
-			suggestions: suggestionsWidgets
+			suggestions: this.items
 		}
 	);
 };

@@ -25,14 +25,14 @@ var getSuggestionWidgetForSuggestionData = function ( suggestionData ) {
 };
 
 SuggestionsRejectedGroupWidget.prototype.render = function () {
-	var suggestionsWidgets = $.map( this.suggestionDataArray, getSuggestionWidgetForSuggestionData );
-	this.addItems( suggestionsWidgets );
+	this.clearItems();
+	this.addItems( $.map( this.suggestionDataArray, getSuggestionWidgetForSuggestionData ) );
 	this.$element.css( 'display', this.suggestionDataArray.length > 0 ? 'block' : 'none' );
 	this.renderTemplate(
 		'resources/widgets/SuggestionsRejectedGroupWidget.mustache+dom',
 		{
 			titleLabel: this.titleLabel,
-			suggestions: suggestionsWidgets
+			suggestions: this.items
 		}
 	);
 };
