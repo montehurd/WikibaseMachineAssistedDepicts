@@ -1,8 +1,7 @@
 'use strict';
 
-var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
-
-var	SuggestionConfirmedWidget = function WikibaseMachineAssistedDepictsSuggestionConfirmedWidget( config ) {
+var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' ),
+SuggestionConfirmedWidget = function WikibaseMachineAssistedDepictsSuggestionConfirmedWidget( config ) {
 	SuggestionConfirmedWidget.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-confirmed-suggestion');
 

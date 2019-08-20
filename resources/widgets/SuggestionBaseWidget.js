@@ -1,8 +1,7 @@
 'use strict';
 
-var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
-
-var	SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBaseWidget( config ) {
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' ),
+SuggestionBaseWidget = function WikibaseMachineAssistedDepictsSuggestionBaseWidget( config ) {
 	config.classes = ['wbmad-base-suggestion'];
 	SuggestionBaseWidget.parent.call( this, $.extend( {}, config ) );
 	this.suggestionData = config.suggestionData;

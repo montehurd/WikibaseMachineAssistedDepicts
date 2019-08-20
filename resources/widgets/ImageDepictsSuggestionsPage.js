@@ -1,9 +1,8 @@
 'use strict';
 
-var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
-var ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' );
-
-var	ImageDepictsSuggestionsPage = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPage( config ) {
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' ),
+ImageWithSuggestionsWidget = require( './ImageWithSuggestionsWidget.js' ),
+ImageDepictsSuggestionsPage = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPage( config ) {
 	ImageDepictsSuggestionsPage.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-image-depicts-suggestions-page');
 	this.addItems($.map( config.imageDataArray, getImageWithSuggestionsWidgetForImageData ));

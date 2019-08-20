@@ -1,10 +1,9 @@
 'use strict';
 
-var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
-var SuggestionWidget = require( './SuggestionWidget.js' );
-var SuggestionConfirmedWidget = require( './SuggestionConfirmedWidget.js' );
-
-var SuggestionsGroupWidget = function WikibaseMachineAssistedDepictsSuggestionsGroupWidget( config ) {
+var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' ),
+SuggestionWidget = require( './SuggestionWidget.js' ),
+SuggestionConfirmedWidget = require( './SuggestionConfirmedWidget.js' ),
+SuggestionsGroupWidget = function WikibaseMachineAssistedDepictsSuggestionsGroupWidget( config ) {
 	SuggestionsGroupWidget.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-suggestion-group');
 

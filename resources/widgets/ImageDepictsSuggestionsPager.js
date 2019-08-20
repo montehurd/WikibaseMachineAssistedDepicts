@@ -1,13 +1,11 @@
 'use strict';
 
-var IMAGES_PER_PAGE = 25;
-
-var TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' );
-var ImageDepictsSuggestionsPage = require( './ImageDepictsSuggestionsPage.js' );
-var SuggestionData = require( './../models/SuggestionData.js' );
-var ImageData = require( './../models/ImageData.js' );
-
-var	ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPager( config ) {
+var IMAGES_PER_PAGE = 25,
+TemplateRenderingDOMLessGroupWidget = require( './../base/TemplateRenderingDOMLessGroupWidget.js' ),
+ImageDepictsSuggestionsPage = require( './ImageDepictsSuggestionsPage.js' ),
+SuggestionData = require( './../models/SuggestionData.js' ),
+ImageData = require( './../models/ImageData.js' ),
+ImageDepictsSuggestionsPager = function WikibaseMachineAssistedDepictsImageDepictsSuggestionsPager( config ) {
 	ImageDepictsSuggestionsPager.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-image-depicts-suggestions-pager');
 	this.descriptionLabel = new OO.ui.LabelWidget( {

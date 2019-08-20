@@ -1,8 +1,7 @@
 'use strict';
 
-var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' );
-
-var	SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( config ) {
+var SuggestionBaseWidget = require( './SuggestionBaseWidget.js' ),
+SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( config ) {
 	SuggestionWidget.parent.call( this, $.extend( {}, config ) );
 	this.$element.addClass('wbmad-suggestion');
 
