@@ -9,7 +9,7 @@ SuggestionWidget = function WikibaseMachineAssistedDepictsSuggestionWidget( conf
 		label: this.suggestionData.text
 	} );
 
-	this.subtractButton = new OO.ui.ButtonWidget( {
+	this.closeButton = new OO.ui.ButtonWidget( {
 		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-reject-title', this.suggestionData.text ).text(),
 		icon: 'close',
 		framed: false
@@ -28,7 +28,7 @@ SuggestionWidget.prototype.render = function () {
 		'resources/widgets/SuggestionWidget.mustache+dom',
 		{
 			suggestionLabel: this.suggestionLabel,
-			subtractButton: this.subtractButton
+			closeButton: this.closeButton
 		}
 	);
 };

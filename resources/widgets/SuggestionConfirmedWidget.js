@@ -9,7 +9,7 @@ SuggestionConfirmedWidget = function WikibaseMachineAssistedDepictsSuggestionCon
 		label: this.suggestionData.text
 	} );
 
-	this.subtractButton = new OO.ui.ButtonWidget( {
+	this.checkButton = new OO.ui.ButtonWidget( {
 		title: mw.message( 'wikibasemachineassisteddepicts-suggestion-confirm-undo-title', this.suggestionData.text ).text(),
 		icon: 'check',
 		framed: false
@@ -28,7 +28,7 @@ SuggestionConfirmedWidget.prototype.render = function () {
 		'resources/widgets/SuggestionConfirmedWidget.mustache+dom',
 		{
 			suggestionLabel: this.suggestionLabel,
-			subtractButton: this.subtractButton
+			checkButton: this.checkButton
 		}
 	);
 };
