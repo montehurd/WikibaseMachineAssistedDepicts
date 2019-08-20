@@ -40,8 +40,9 @@ SuggestionsGroupWidget.prototype.getSuggestionWidgetForSuggestionData = function
 };
 
 SuggestionsGroupWidget.prototype.render = function () {
-	this.clearItems();
-	this.addItems( $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) ) );
+	this.clearItems()
+		.addItems( $.map( this.suggestionDataArray, this.getSuggestionWidgetForSuggestionData.bind( this ) ) );
+
 	this.renderTemplate(
 		'resources/widgets/SuggestionsGroupWidget.mustache+dom',
 		{
