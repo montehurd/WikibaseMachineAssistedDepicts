@@ -1,5 +1,4 @@
 # WikibaseMachineAssistedDepicts
-Prototype for Mediawiki extension allowing users to confirm image tag suggestions provided by a machine learning model
 
 This extension is a testing prototype and is currently wired up to present a list of images with faked out tags.
 
